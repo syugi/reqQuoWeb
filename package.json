@@ -1,0 +1,25 @@
+{
+  "name": "reqQuoWeb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "pm2": "^4.2.3",
+    "swiper": "^5.3.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syugi90/reqQuoWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/syugi90/reqQuoWeb/issues"
+  },
+  "homepage": "https://github.com/syugi90/reqQuoWeb#readme"
+}
