@@ -5,12 +5,11 @@ module.exports = {
      html : function(){
 		return sliderSection()
 		+ categorySection()
-		+ socialSection() 
 		+ companySection() 
 		+ iconSection() 
 		+ blogSection() 
 		+ categorySection() 
-		+ sliderSection()
+		+ socialSection() 
 	 }
 }
 	

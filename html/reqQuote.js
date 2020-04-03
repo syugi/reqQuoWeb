@@ -2,7 +2,7 @@ module.exports = {
 	
 	html:function(){
 		 return topSection() 
-			 +formSection
+			 +formSection();
 	}
 }
 	
