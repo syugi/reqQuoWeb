@@ -1,0 +1,1 @@
+alert( 'Lorem ipsum dolor' );
