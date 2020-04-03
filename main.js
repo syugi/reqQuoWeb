@@ -16,18 +16,12 @@ const app = http.createServer(function(request,response){
     const pathname = url.parse(_url, true).pathname;
     if(pathname === '/'){
      
-	  const body  = `${home.sliderSection()} 
-                     ${home.categorySection()} 
-                     ${home.blogSection()} 
-                     ${home.iconSection()}
-                     ${home.companySection()}
-					 ${home.socialSection()}
-                    `;
-		
-      const html = template.HTML(TITLE, body , common.header(), common.footer());
-      
-      response.writeHead(200);
-      response.end(html);
+		const body  = `${home.html()}`;
+
+		const html = template.HTML(TITLE, body , common.header(), common.footer());
+
+		response.writeHead(200);
+		response.end(html);
           
 	}else if(pathname === "/company"){ /*회사소개*/
 		const testurl = '/test.html';
@@ -38,18 +32,16 @@ const app = http.createServer(function(request,response){
 		
 	}else if(pathname === "/reqQuote"){ /*견적요청*/
 		
-		const body  = `${reqQuote.topSection()} 
-					   ${reqQuote.formSection()} 
-                      `;
-		
-      const html = template.HTML(TITLE, body , common.header(), common.footer());
-      
-      response.writeHead(200);
-      response.end(html);
+		const body  = `${reqQuote.html()}`;
+
+		const html = template.HTML(TITLE, body , common.header(), common.footer());
+
+		response.writeHead(200);
+		response.end(html);
 		
     } else {
-      response.writeHead(404);
-      response.end('Not found');
+		response.writeHead(404);
+		response.end('Not found');
     }
  
  

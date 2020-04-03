@@ -1,9 +1,5 @@
 @charset "utf-8";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root{
     --point-color : #2b90d9;
     --base1-color : #d9e1e8;

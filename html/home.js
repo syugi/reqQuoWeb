@@ -2,14 +2,16 @@ const template = require('../lib/template.js');
 
 module.exports = {
 	
-      sliderSection
-	, categorySection
-	, socialSection 
-	, companySection 
-	, iconSection 
-	, blogSection 
-	, categorySection 
-	, sliderSection
+     html : function(){
+		return sliderSection()
+		+ categorySection()
+		+ socialSection() 
+		+ companySection() 
+		+ iconSection() 
+		+ blogSection() 
+		+ categorySection() 
+		+ sliderSection()
+	 }
 }
 	
 

@@ -1,6 +1,9 @@
 module.exports = {
-	 topSection 
-	,formSection
+	
+	html:function(){
+		 return topSection() 
+			 +formSection
+	}
 }
 	
 function topSection(){
