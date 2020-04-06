@@ -4,7 +4,9 @@
   "description": "",
   "main": "main.js",
   "dependencies": {
+    "express": "^4.17.1",
     "pm2": "^4.2.3",
+    "request": "^2.88.2",
     "swiper": "^5.3.6"
   },
   "devDependencies": {},
