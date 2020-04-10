@@ -3,16 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www"
+  },
   "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
     "express": "^4.17.1",
+    "express-generator": "^4.16.1",
+    "morgan": "~1.9.1",
     "pm2": "^4.2.3",
     "request": "^2.88.2",
     "swiper": "^5.3.6"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/syugi90/reqQuoWeb.git"
