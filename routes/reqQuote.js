@@ -1,7 +1,7 @@
 const template = require('../views/template/template.js');		
 const reqQuote = require('../views/reqQuote.js');	 
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

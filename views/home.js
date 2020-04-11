@@ -1,5 +1,9 @@
 const template = require('./template/template.js');		
 
+const BLOG_URL = "http://blog.naver.com/h0661h";
+const YOUTUBE_URL = "https://www.youtube.com/channel/UC5aWLxVXVuPyJZCHWrO4Gow";
+
+
 module.exports = {
 	
      html : function(){
@@ -105,7 +109,7 @@ function blogSection(){
 	let list = '';
 	dataList.forEach((data)=>{
 		
-		list += `<div class="w-full lg:w-1/3 md:mx-2 mb-4 md:mb-0">
+		list += `<div class="blog-slide swiper-slide w-full lg:w-1/3 md:mx-2 mb-4 md:mb-0">
                     <div class="bg-white rounded-lg overflow-hidden shadow relative">
                       <img class="h-56 w-full object-cover object-center" src="images/p_images/${data.img}" alt="">
                       <div class="p-4 h-auto md:h-40 lg:h-48">
@@ -129,8 +133,10 @@ function blogSection(){
               <button id = "blog_more_btn" class="absolute right-0 mr-4 bg-gray-300 hover:bg-grey text-grey-dark font-semibold py-2 px-4 border border-grey hover:border-transparent rounded mr-2 float-right text-xs hover:text-white" onclick="window.open('http://blog.naver.com/h0661h') ">더보기..</button> 
             </h2>
               <div class="px-4">
-                <div class="block md:flex justify-between md:-mx-2">
-					${list}
+				<div class="blog_contain swiper-container block md:flex justify-between md:-mx-2">
+					<div class="swiper-wrapper">
+						${list}
+					</div>
                 </div>
               </div>
         </section>`;
@@ -147,7 +153,7 @@ function iconSection(){
 	  ];
       
 	
-	let list = '<ul class = "icon_list">';
+	let list = '';
 	dataList.forEach((data, index)=>{
 		
 		if(index > 0){
@@ -190,14 +196,14 @@ function companySection(){
 	  ];
       
 	
-	let list = '<ul class = "company_list">';
+	let list = '';
 	dataList.forEach((data, index)=>{
 		
 		if(index > 0){
 			list += '<div class="icon_arrow"><img src="images/s_images/icon_arrow.png" alt=""></div>';
 		}
 					 
-		list += `<div class="companyBox swiper-slide px-4">
+		list += `<div class="companyBox swiper-slide px-10 py-6">
                     <img src="images/p_images/${data.img}" alt="">
                     <div class="company_contents" >
                       ${template.list(data.titleList)}
@@ -207,22 +213,25 @@ function companySection(){
 	});		
 			
 	return `<section class="company_section bg-gray-200 ">
-            <span class="text-center pt-12 pb-6 font-bold text-xl">한국건축설비누수를 선택해야하는 이유!</span>
-            <div class="company_page swiper-container">
-              <div class="swiper-wrapper pb-4">
-               ${list}
-              </div>
-              
-              <!-- Add Pagination -->
-              <div class="companyPagin swiper-pagination"></div>
-              
-              <!-- Add Arrows -->
-              <span class="companyPrevBtn swiper-button-prev"></span>
-              <span class="companyNextBtn swiper-button-next"></span>
-              
-            </div>
+            <span class="text-center pt-12 pb-2 font-bold text-xl">한국건축설비누수를 선택해야하는 이유!</span>
+			<div class= "relative">
+				<div class="company_page swiper-container static">
+					<div class="swiper-wrapper">
+						${list}
+					</div>
 
-            <div class="w-full text-center"><button id="reqEstimateBtn"  class="slider_txt bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded " onclick="location.href='reqQuote'">견적문의요청</button></div>
+				</div>
+					
+				<!-- Add Pagination -->
+				<div class="companyPagin swiper-pagination"></div>
+				
+				<!-- Add Arrows -->
+				<span class="companyPrevBtn swiper-button-prev"></span>
+				<span class="companyNextBtn swiper-button-next"></span>
+				
+			</div>
+
+            <div class="w-full text-center"><button id="reqEstimateBtn"  class="slider_txt bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded " style="margin:20px auto; "onclick="location.href='reqQuote'">견적문의요청</button></div>
         </section>`;
 }		
 		
@@ -230,10 +239,10 @@ function socialSection(){
 				
 	return `<section class="social_section">
     			<div class="social_list w-1/2">
-    			  <a href="http://blog.naver.com/h0661h" target="_blank"><div class="flex flex-row pr-6 pb-4"><img src="images/s_images/social_01.png" alt=""><span class="my-auto ml-2 text-white">네이버블로그</span></div></a>
-    			  <a href="https://www.youtube.com/channel/UC5aWLxVXVuPyJZCHWrO4Gow" target="_blank"><div class="flex flex-row"><img src="images/s_images/social_02.png" alt=""><span class="my-auto ml-2  text-white">유튜브</span></div></a>
+    			  <a href="${BLOG_URL}" target="_blank"><div class="flex flex-row pr-6 pb-4"><img src="images/s_images/icon_blog.png" style="width:40px; height:40px"><span class="my-auto ml-2 text-white">네이버블로그</span></div></a>
+    			  <a href="${YOUTUBE_URL}" target="_blank"><div class="flex flex-row"><img src="images/s_images/icon_youtube.png" style="width:40px; height:40px"><span class="my-auto ml-2  text-white">유튜브</span></div></a>
     			</div>
-    			 <div class="w-1/2 h-12 flex  m-auto justify-center"><a class="inline-flex" href="tel:010-7504-1822"><img src="images/s_images/social_02.png" alt=""><span class="social_call my-auto ml-2 text-blue-400 font-semibold underline">010-7504-1822</span></div></a>
+    			 <div class="w-1/2 h-12 flex  m-auto justify-center"><a class="inline-flex my-auto " href="tel:010-7504-1822"><img src="images/s_images/icon_call.png" style="width:30px; height:30px"><span class="social_call ml-2 text-blue-400 font-semibold underline">010-7504-1822</span></div></a>
 
     		</section>`;			
 }

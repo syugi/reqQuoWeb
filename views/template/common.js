@@ -14,7 +14,7 @@ exports.header = function(){
 
 		//console.log(">>sss dataList :"+JSON.stringify(dataList));
 
-		let list = '<ul>';
+		let list = '<ul class="gnb">';
 		dataList.forEach((data)=>{
 			// console.log(">>>"+data.url+" : "+data.url);
 			list += `<li><a href="${data.url}">${data.menuNm}</a><span class="sub_menu_toggle_btn">하위 메뉴 토글 버튼</span></li>`

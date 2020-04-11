@@ -1,7 +1,7 @@
 var express = require('express');
 const template = require('../views/template/template.js');		
 const home = require('../views/home.js');	 
-var router = express.Router();
+const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -18,17 +18,29 @@ router.get('/', function(req, res, next) {
 		<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
 		<script>
 			
+			<!-- 블로그 슬라이드--> 
+			var blogSwiper = new Swiper('.blog_contain', {
+				loop: true,
+				slidesPerView: 4,
+				spaceBetween: 30,
+				centeredSlides: true,
+				pagination: {
+					el: '.blogPagin',
+					clickable: true,
+				},
+			});
+	
 			<!-- 회사소개 슬라이드--> 
 			var swiper = new Swiper('.company_page', {
-			  loop: true,
-			  pagination: {
+				loop: true,
+				pagination: {
 				el: '.companyPagin',
 				type: 'fraction',
-			  },
-			  navigation: {
+				},
+				navigation: {
 				nextEl: '.companyNextBtn',
 				prevEl: '.companyPrevBtn',
-			  },
+				},
 
 			});
 
