@@ -7,30 +7,30 @@ module.exports = {
 }
 	
 function topSection(){
-	return `topSection`;
+	return ``;
 }
 
 function formSection(){
 	return `
 		<section class="form_section">
-			<form>
+			<form action="/reqQuote/send_process" method="post">
 				<!-- 기본정보 -->
 				<div class="subTitle">기본정보</div>
 				<label class="block">
 					<span class="text-gray-700">이름</span>
-					<input class="form-input mt-1 block w-full" placeholder="">
+					<input class="form-input mt-1 block w-full" type="text" name="custName"  placeholder="">
 				</label>
 				<label class="block">
 					<span class="text-gray-700">연락처</span>
-					<input class="form-input mt-1 block w-full" placeholder="">
+					<input class="form-input mt-1 block w-full" type="text" name="telNo" placeholder="">
 				</label>
 				
 				<!-- 상세정보 -->
          		<div class="subTitle">상세정보</div>
 				<label class="block mt-4">
 					<span class="text-gray-700">업종</span>
-					<select class="form-select mt-1 block w-full">
-					  <option>누수</option>
+					<select class="form-select mt-1 block w-full" name="upjong">
+					  <option >누수</option>
 					  <option>변기</option>
 					  <option>보일러</option>
 					  <option>기타</option>
@@ -41,15 +41,15 @@ function formSection(){
 					<span class="text-gray-700">보일러 구분</span>
 					<div class="mt-2">
 					  <label class="inline-flex items-center">
-						<input type="radio" class="form-radio" name="accountType" value="personal">
+						<input type="radio" class="form-radio" name="boilerType" value="personal">
 						<span class="ml-2">개별난방</span>
 					  </label>
 					  <label class="inline-flex items-center ml-6">
-						<input type="radio" class="form-radio" name="accountType" value="busines">
+						<input type="radio" class="form-radio" name="boilerType" value="busines">
 						<span class="ml-2">지역난방</span>
 					  </label>
 					  <label class="inline-flex items-center ml-6">
-						<input type="radio" class="form-radio" name="accountType" value="busines">
+						<input type="radio" class="form-radio" name="boilerType" value="busines">
 						<span class="ml-2">기타</span>
 					  </label>
 					</div>
@@ -104,6 +104,9 @@ function formSection(){
 					</div>
 				</div>
 
+				<p>
+					<input type="submit">
+				</p>
 			</form>
 		</section>
     `;

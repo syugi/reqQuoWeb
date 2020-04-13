@@ -1,4 +1,5 @@
 const template = require('./template/template.js');		
+//const db = require('../model/db_conn.js');
 
 const BLOG_URL = "http://blog.naver.com/h0661h";
 const YOUTUBE_URL = "https://www.youtube.com/channel/UC5aWLxVXVuPyJZCHWrO4Gow";
@@ -89,6 +90,11 @@ function categorySection(){
 
 
 function blogSection(){
+
+	// db.query("SELECT * FROM users", function (err, result) {
+	// 	if (err) throw err;
+	// 	console.log("Result: " + JSON.stringify(result));
+	// });
 	
 	const dataList = [
 		{  	title:"바닥에서 물이 올라와요.",  
@@ -103,43 +109,42 @@ function blogSection(){
 			content:"인천 청라동 변기가 막혀서 방문했어요  아이가 양치하다가 칫솔이 들어갔다네요..." , 
 			img:"blogImg_03.jpg"  
 		}
-	  ];
-      
-	
+	];
+
+
 	let list = '';
 	dataList.forEach((data)=>{
-		
 		list += `<div class="blog-slide swiper-slide w-full lg:w-1/3 md:mx-2 mb-4 md:mb-0">
-                    <div class="bg-white rounded-lg overflow-hidden shadow relative">
-                      <img class="h-56 w-full object-cover object-center" src="images/p_images/${data.img}" alt="">
-                      <div class="p-4 h-auto md:h-40 lg:h-48">
-                        <a href="#" class="block text-blue-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-lg">
-                          ${data.title}
-                        </a>
-                        <div class="text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-sm">
-                        ${data.content}
-                        </div>
-                        <!--<div class="relative mt-2 lg:absolute bottom-0 mb-4 md:hidden lg:block">
-                          <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs lowercase text-gray-700" href="#">#something</a>
-                          <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs lowercase text-gray-700" href="#">#sky</a>
-                        </div>-->
-                      </div>
-                    </div>
-                  </div>`;
+					<div class="bg-white rounded-lg overflow-hidden shadow relative">
+					  <img class="h-56 w-full object-cover object-center" src="images/p_images/${data.img}" alt="">
+					  <div class="p-4 h-auto md:h-40 lg:h-48">
+						<a href="#" class="block text-blue-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-lg">
+						  ${data.title}
+						</a>
+						<div class="text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-sm">
+						${data.content}
+						</div>
+						<!--<div class="relative mt-2 lg:absolute bottom-0 mb-4 md:hidden lg:block">
+						  <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs lowercase text-gray-700" href="#">#something</a>
+						  <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs lowercase text-gray-700" href="#">#sky</a>
+						</div>-->
+					  </div>
+					</div>
+				  </div>`;
 	});		
-			
+
 	return `<section class="blog_section">
-            <h2 class="text-center p-4 font-bold text-2xl">시공사례
-              <button id = "blog_more_btn" class="absolute right-0 mr-4 bg-gray-300 hover:bg-grey text-grey-dark font-semibold py-2 px-4 border border-grey hover:border-transparent rounded mr-2 float-right text-xs hover:text-white" onclick="window.open('http://blog.naver.com/h0661h') ">더보기..</button> 
-            </h2>
-              <div class="px-4">
+			<h2 class="text-center p-4 font-bold text-2xl">시공사례
+			  <button id = "blog_more_btn" class="absolute right-0 mr-4 bg-gray-300 hover:bg-grey text-grey-dark font-semibold py-2 px-4 border border-grey hover:border-transparent rounded mr-2 float-right text-xs hover:text-white" onclick="window.open('http://blog.naver.com/h0661h') ">더보기..</button> 
+			</h2>
+			  <div class="px-4">
 				<div class="blog_contain swiper-container block md:flex justify-between md:-mx-2">
 					<div class="swiper-wrapper">
 						${list}
 					</div>
-                </div>
-              </div>
-        </section>`;
+				</div>
+			  </div>
+		</section>`;
 		
 }
 		

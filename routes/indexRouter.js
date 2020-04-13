@@ -1,10 +1,17 @@
-var express = require('express');
 const template = require('../views/template/template.js');		
-const home = require('../views/home.js');	 
+const home = require('../views/home.js');	
+const express = require('express'); 
 const router = express.Router();
+
+const fs = require('fs');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+
+   // fs.readFile('./public/data.json', function(error, dataList){
+   // req.list = dataList;
+   // });
+	
   const title = "한국건축설비누수";
   const body  = `${home.html()}`;
   const link  = `
