@@ -59,9 +59,9 @@ function formSection(){
 					<div>* 일정에 따라 인천/경기 이외 지역은 시공이 불가능 할 수 있습니다. </div>
 					<input type="text" id="sample3_postcode" name="postCode" placeholder="우편번호">
 					<input type="button" onclick="sample3_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" id="sample3_address" name="address" placeholder="주소"><br>
-					<input type="text" id="sample3_detailAddress" name="detailAddress" placeholder="상세주소">
-					<input type="text" id="sample3_extraAddress" name="extraAddress" placeholder="참고항목">
+					<input type="text" id="sample3_address" name="addr" placeholder="주소"><br>
+					<input type="text" id="sample3_detailAddress" name="dtlAddr" placeholder="상세주소">
+					<input type="text" id="sample3_extraAddress" name="extAddr" placeholder="참고항목">
 
 					<div id="post_wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
 					  <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
@@ -70,7 +70,7 @@ function formSection(){
 
 				<label class="block">
 					<span class="text-gray-700">상세내용</span>
-					<textarea class="form-textarea mt-1 block w-full" rows="3" name="desc" placeholder="상세 내용을 입력해주세요."></textarea>
+					<textarea class="form-textarea mt-1 block w-full" rows="3" name="descr" placeholder="상세 내용을 입력해주세요."></textarea>
 				 </label>
 
 				 <label class="block">
@@ -85,11 +85,11 @@ function formSection(){
 					<span class="text-gray-700">견적요청자</span>
 					<div class="mt-2">
 					  <label class="inline-flex items-center">
-						<input type="radio" class="form-radio" name="custType" value="personal">
+						<input type="radio" class="form-radio" name="custType" value="주인">
 						<span class="ml-2">주인</span>
 					  </label>
 					  <label class="inline-flex items-center ml-6">
-						<input type="radio" class="form-radio" name="custType" value="busines">
+						<input type="radio" class="form-radio" name="custType" value="세입자">
 						<span class="ml-2">세입자</span>
 					  </label>
 					</div>
