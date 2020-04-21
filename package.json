@@ -11,12 +11,13 @@
   "dependencies": {
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
+    "coolsms-node-sdk": "0.0.2",
     "debug": "~2.6.9",
     "express": "^4.17.1",
     "express-generator": "^4.16.1",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
-    "pm2": "^4.2.3",
+    "pm2": "^4.3.1",
     "request": "^2.88.2",
     "swiper": "^5.3.6"
   },

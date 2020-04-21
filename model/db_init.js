@@ -1,10 +1,11 @@
 const mysql = require('mysql');
+const dbConfig = require('../config/db_config');
 
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "hello2323!",
-  database: "HKNS"
+const db =  mysql.createConnection({
+  host: dbConfig.host,
+  user: dbConfig.user,
+  password: dbConfig.password,
+  database: dbConfig.database
 }); 
 
 //데이터베이스 생성!

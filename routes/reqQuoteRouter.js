@@ -2,12 +2,13 @@ const template = require('../views/template/template.js');
 const reqQuote = require('../views/reqQuote.js');	 
 const express  = require('express');
 const db = require('../model/db_conn.js');
+const config = require('../config/config');
 
 const router   = express.Router();     
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  const title = "한국건축설비누수";
+  const title = config.company_name;
   const body  = `${reqQuote.html()}`;
   const link  = `<link rel="stylesheet" href="/stylesheets/reqQuote.css">`;
   const script = `
@@ -22,7 +23,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/send', function(req, res, next) {
-    const title = "한국건축설비누수";
+    const title = config.company_name;
     const body  = `<section style="order:3; width:100%; height:300px; ">
             <p>견적요청이 완료되었습니다.</p>
               <button onclick="location.href='/'">확인</button>

@@ -1,5 +1,6 @@
 const template = require('../views/template/template.js');		
 const home = require('../views/home.js');	
+const config = require('../config/config');
 const express = require('express'); 
 const router = express.Router();
 
@@ -12,7 +13,7 @@ router.get('/', function(req, res, next) {
    // req.list = dataList;
    // });
 	
-  const title = "한국건축설비누수";
+  const title = config.company_name;
   const body  = `${home.html()}`;
   const link  = `
 		<!--Swiper-->
