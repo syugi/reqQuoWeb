@@ -1,6 +1,7 @@
 const mysql = require('mysql');
 const dbConfig = require('../config/db_config');
 
+
 const db =  mysql.createConnection({
   host: dbConfig.host,
   user: dbConfig.user,
@@ -27,11 +28,30 @@ const create_reqQuoteList = `
             , EXT_ADDR    varchar(300) 
             , DESCR       varchar(1000) 
             , CUST_TYPE   varchar(20)
-            , CREATED_AT DATETIME not null default now()
-            , primary key(id)
+            , CREATED_DT DATETIME not null default now()
+            , primary key(ID)
             , unique index name_unique (CUST_NM ASC)
          )
          comment = '견적요청리스트'
+         default charset = utf8
+         engine=InnoDB `;
+
+//문자발송 테이블 생성 
+const create_sendMsgList = `
+CREATE TABLE SEND_MSG_LIST(
+              SEQ          INT NOT NULL AUTO_INCREMENT
+            , REQ_DATE     varchar(20)  
+            , TO_TELNO     varchar(15) 
+            , FROM_TELNO   varchar(15)
+            , SUBJECT      varchar(200) 
+            , CONTENTS     varchar(2000)
+            , MSG_TYPE     varchar(20) 
+            , SEND_YN      varchar(2)  
+            , SEND_DT      DATETIME
+            , CREATED_DT   DATETIME not null default now()
+            , primary key(SEQ)
+         )
+         comment = '문자발송리스트'
          default charset = utf8
          engine=InnoDB `;
 
@@ -40,8 +60,13 @@ db.connect(function(err) {
   if (err) throw err;
   console.log("DB Connected!");
 	
+  //dropTable("SEND_MSG_LIST");
+  
   //견적요청 테이블  생성
   createTable("REQ_QUOTE_LIST", create_reqQuoteList);
+  
+  //문자발송 테이블  생성
+  createTable("SEND_MSG_LIST", create_sendMsgList);
 
 });
 
@@ -56,16 +81,16 @@ function createTable(tableNm , sql){
     if (err) throw err;
 
     if(result.length > 0){
-        console.log(`[Already Exists] ${tableNm} 테이블이 생성되어있습니다.`);
-      
-    }else{
-        console.log(`[Create Start] ${tableNm} 테이블을 생성합니다.`);
+        console.log(`[Create] ${tableNm} 테이블이 이미 생성되어있습니다.`);
 
-         db.query(sql, function (err, result) {
-            if (err) throw err;
-            console.log(`[Create E n d] ${tableNm} 테이블이 생성되었습니다.`);
-         });
-    }
+    }else{
+       console.log(`[Create Start] ${tableNm} 테이블을 생성을 시작 합니다.`);
+
+       db.query(sql, function (err, result) {
+          if (err) throw err;
+          console.log(`[Create E n d] ${tableNm} 테이블이 생성이 완료 되었습니다.`);
+       });
+    }
   });
   
 }
@@ -75,12 +100,40 @@ function createTable(tableNm , sql){
  * 테이블 삭제
  */
 function dropTable(tableNm){
-  const dropSql = `DROP TABLE ${tableNm}`;
-  db.query(dropSql, function (err, result) {
+  
+  const existSql = `SHOW TABLES LIKE '${tableNm}'`;
+  db.query(existSql, function (err, result) {
     if (err) throw err;
-    console.log(`[Delete] ${tableNm} 테이블이 삭제되었습니다.`);
-  });
 
+    if(result.length > 0){
+      
+        const dropSql = `DROP TABLE ${tableNm}`;
+        db.query(dropSql, function (err, result) {
+          if (err) throw err;
+          console.log(`[Delete] ${tableNm} 테이블이 삭제되었습니다.`);
+        });
+    }else{
+      console.log(`[Delete] ${tableNm} 테이블이 없습니다.`);
+    }
+  });
 }
   
-  
+
+// /*
+//  * 테이블 존재 확인 
+//  */
+// function existTable(tableNm){
+//   const existSql = `SHOW TABLES LIKE '${tableNm}'`;
+//   db.query(existSql, function (err, result) {
+//     if (err) throw err;
+
+//     if(result.length > 0){
+//         console.log(`[Already Exists] ${tableNm} 테이블이 생성되어있습니다.`);
+//         return false; 
+//     }else{
+//         console.log(`[NOT Exist] ${tableNm} 테이블이 없습니다.`);
+//         return true; 
+//     }
+//   });
+// }
+  
