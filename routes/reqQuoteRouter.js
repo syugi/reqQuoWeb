@@ -3,7 +3,8 @@ const reqQuote = require('../views/reqQuote.js');
 const express  = require('express');
 const db = require('../model/db_conn.js');
 const config = require('../config/config');
-
+const smsConf = require('../config/sms_config');
+const comLib  = require('../lib/comLib');
 const router   = express.Router();     
 
 /* GET users listing. */
@@ -48,13 +49,23 @@ router.post('/send_process', function(req, res, next){
   const sql = "INSERT INTO REQ_QUOTE_LIST ( ID, CUST_NM, TEL_NO, EMAIL_ID, EMAIL_DOWN, UPJONG, BOILER_TYPE, POST_CODE, ADDR, DTL_ADDR,EXT_ADDR, DESCR, CUST_TYPE ) VALUES (0, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?)";
         
   db.query(sql, [ post.custNm, post.telNo, null, null, post.upjong, post.boilerType, post.postCode, post.addr, post.dtlAddr, post.extAddr, post.descr, post.custType], function(error, result){
-      if(error){
+    if(error){
       throw error;
     }
 
-    console.log('견적요청 전송되었습니다.');
-    res.redirect( '/reqQuote/send');
-                    
+    const sql2 = "INSERT INTO SEND_MSG_LIST ( SEQ, REQ_DATE, TO_TELNO, FROM_TELNO, SUBJECT, CONTENTS, MSG_TYPE, SEND_YN ) VALUES (0, ?, ?, ?, ?, ? ,?, ?)";
+    const reqDate = "20200420";
+    const contents = "메세지내용";
+    db.query(sql2 , [ reqDate, post.telNo, smsConf.from, smsConf.comp_subject, contents, smsConf.type, "N"], function(error, result){
+      if(error){
+        throw error;
+      }
+
+      console.log('견적요청 전송되었습니다.');
+      res.redirect( '/reqQuote/send');
+                      
+    });  
+             
   });       
   
 });
