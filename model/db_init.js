@@ -14,8 +14,8 @@ const db =  mysql.createConnection({
 
 //견적요청리스트 테이블 생성 
 const create_reqQuoteList = `
-        CREATE TABLE REQ_QUOTE_LIST(
-              ID          INT NOT NULL AUTO_INCREMENT
+CREATE TABLE REQ_QUOTE_LIST(
+              REQ_ID          INT NOT NULL AUTO_INCREMENT
             , CUST_NM     varchar(20)  not null
             , TEL_NO      varchar(20)  not null
             , EMAIL_ID    varchar(160)
@@ -29,8 +29,7 @@ const create_reqQuoteList = `
             , DESCR       varchar(1000) 
             , CUST_TYPE   varchar(20)
             , CREATED_DT DATETIME not null default now()
-            , primary key(ID)
-            , unique index name_unique (CUST_NM ASC)
+            , primary key(REQ_ID)
          )
          comment = '견적요청리스트'
          default charset = utf8
@@ -40,6 +39,7 @@ const create_reqQuoteList = `
 const create_sendMsgList = `
 CREATE TABLE SEND_MSG_LIST(
               SEQ          INT NOT NULL AUTO_INCREMENT
+            , REQ_ID       INT NOT NULL
             , REQ_DATE     varchar(20)  
             , TO_TELNO     varchar(15) 
             , FROM_TELNO   varchar(15)
@@ -60,7 +60,7 @@ db.connect(function(err) {
   if (err) throw err;
   console.log("DB Connected!");
 	
-  //dropTable("SEND_MSG_LIST");
+  //dropTable("REQ_QUOTE_LIST");
   
   //견적요청 테이블  생성
   createTable("REQ_QUOTE_LIST", create_reqQuoteList);
