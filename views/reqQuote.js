@@ -13,7 +13,7 @@ function topSection(){
 function formSection(){
 	return `
 		<section class="form_section">
-			<form action="/reqQuote/send_process" method="post">
+			<form action="/reqQuote/save" method="post">
 				<!-- 기본정보 -->
 				<div class="subTitle">기본정보</div>
 				<label class="block">
@@ -108,6 +108,24 @@ function formSection(){
 					<input type="submit">
 				</p>
 			</form>
+
+<!-- 파일업로드 테스트 -->
+      <form name="questionForm" method="post" enctype="multipart/form-data" action="/reqQuote/test">
+          <input type="hidden" name="TEST_SN" value="1">
+
+          <ul id="questionFormList">
+            <li>
+              <input type="hidden" name="Q_SN" value="2">
+              <input type="file" name="IMG_FILE">
+            </li>
+            <li>
+              ...
+            </li>
+            ...
+          </ul>
+          <input type="submit" value="전송">
+        </form>
+
 		</section>
     `;
 }
