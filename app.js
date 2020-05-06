@@ -7,6 +7,7 @@ const compression = require('compression');
 const indexRouter = require('./routes/indexRouter');
 const companyRouter = require('./routes/companyRouter');
 const reqQuoteRouter = require('./routes/reqQuoteRouter');
+const fileTest = require('./test/fileTest'); //파일 테스트 
 
 const app = express();
 
@@ -20,6 +21,11 @@ app.use(compression()); //데이터 양을 줄이기 위한 압축 미들웨어
 app.use('/', indexRouter);
 app.use('/company', companyRouter);
 app.use('/reqQuote', reqQuoteRouter);
+
+ 
+app.use('/fileTest', fileTest); //파일 테스트
+
+
 
 app.use(function(req, res, next) {
   res.status(404).send('Sorry cant find that!');

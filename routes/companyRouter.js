@@ -1,7 +1,8 @@
-const template = require('../views/template/template.js');		
-const company = require('../views/company.js');	  
 const express = require('express');
 const router = express.Router();
+const template = require('../views/template/template.js');		
+const company = require('../views/company.js');	  
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

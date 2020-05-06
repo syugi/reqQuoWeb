@@ -13,7 +13,8 @@ function topSection(){
 function formSection(){
 	return `
 		<section class="form_section">
-			<form action="/reqQuote/save" method="post">
+
+      <form method="POST" enctype="multipart/form-data" action="/reqQuote/save">  
 				<!-- 기본정보 -->
 				<div class="subTitle">기본정보</div>
 				<label class="block">
@@ -75,6 +76,7 @@ function formSection(){
 
 				 <label class="block">
 					<span class="text-gray-700">첨부파일(현장사진)</span>
+          <input type="file" name="photo">
 				 </label>
 
 
@@ -105,26 +107,20 @@ function formSection(){
 				</div>
 
 				<p>
-					<input type="submit">
+					 <input type="submit" value="upload" name="submit">
 				</p>
 			</form>
 
 <!-- 파일업로드 테스트 -->
-      <form name="questionForm" method="post" enctype="multipart/form-data" action="/reqQuote/test">
-          <input type="hidden" name="TEST_SN" value="1">
-
-          <ul id="questionFormList">
-            <li>
-              <input type="hidden" name="Q_SN" value="2">
-              <input type="file" name="IMG_FILE">
-            </li>
-            <li>
-              ...
-            </li>
-            ...
-          </ul>
-          <input type="submit" value="전송">
-        </form>
+ <form method="POST" enctype="multipart/form-data" action="/fileTest/upload">
+        <table>
+            <tr>
+                <td><label>file</label></td>
+                <td><input type="file" name="photo"></td>
+            </tr>
+        </table>
+        <input type="submit" value="upload" name="submit">
+    </form>
 
 		</section>
     `;
