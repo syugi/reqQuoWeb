@@ -111,17 +111,6 @@ function formSection(){
 				</p>
 			</form>
 
-<!-- 파일업로드 테스트 -->
- <form method="POST" enctype="multipart/form-data" action="/fileTest/upload">
-        <table>
-            <tr>
-                <td><label>file</label></td>
-                <td><input type="file" name="photo"></td>
-            </tr>
-        </table>
-        <input type="submit" value="upload" name="submit">
-    </form>
-
 		</section>
     `;
 }

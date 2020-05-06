@@ -10,6 +10,9 @@ exports.HTML = function(title, link, body , script){
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="stylesheet" href="/stylesheets/default.css">
 		<link rel="stylesheet" href="/stylesheets/reset.css">
+
+    <link rel="stylesheet" href="/build/tailwind.css">
+
 		<title>${title}</title>
  
 		${link}
