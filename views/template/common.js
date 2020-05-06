@@ -24,7 +24,7 @@ exports.header = function(){
 
 		return `
 			<h1 class="logo">
-				<a href="index.html">${TITLE}</a>
+				<a href="/">${TITLE}</a>
 			</h1>
 				<nav class="nav">
 					${list}
