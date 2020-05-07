@@ -1,13 +1,14 @@
-const express = require('express');
-const path = require('path');
+const express      = require('express');
+const path         = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const compression = require('compression');
+const logger       = require('morgan');
+const compression  = require('compression');
 
-const indexRouter = require('./routes/indexRouter');
-const companyRouter = require('./routes/companyRouter');
+const indexRouter    = require('./routes/indexRouter');
+const companyRouter  = require('./routes/companyRouter');
 const reqQuoteRouter = require('./routes/reqQuoteRouter');
-const fileTest = require('./test/fileTest'); //파일 테스트 
+const adminRouter    = require('./routes/adminRouter');
+const fileTest       = require('./test/fileTest'); //파일 테스트 
 
 const app = express();
 
@@ -18,13 +19,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(compression()); //데이터 양을 줄이기 위한 압축 미들웨어
 
-app.use('/', indexRouter);
-app.use('/company', companyRouter);
-app.use('/reqQuote', reqQuoteRouter);
+app.use('/'         , indexRouter   );
+app.use('/company'  , companyRouter );
+app.use('/reqQuote' , reqQuoteRouter);
+app.use('/admin'    , adminRouter   );
 
  
-app.use('/fileTest', fileTest); //파일 테스트
-
+app.use('/fileTest' , fileTest      ); //파일 테스트
 
 
 app.use(function(req, res, next) {

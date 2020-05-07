@@ -1,8 +1,8 @@
-const express = require('express'); 
-const router = express.Router();
+const express  = require('express'); 
+const router   = express.Router();
 const template = require('../views/template/template.js');		
-const home = require('../views/home.js');	
-const config = require('../config/config');
+const home     = require('../views/home.js');	
+const config   = require('../config/config');
 
 
 const fs = require('fs');

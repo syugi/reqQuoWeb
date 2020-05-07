@@ -18,6 +18,7 @@
     "debug": "~2.6.9",
     "express": "^4.17.1",
     "express-generator": "^4.16.1",
+    "is-0": "^1.0.2",
     "morgan": "~1.9.1",
     "multer": "^1.4.2",
     "mysql": "^2.18.1",

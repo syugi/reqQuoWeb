@@ -8,11 +8,12 @@ config.init({
 async function send (params = {}) {
   try {
     const response = await Group.sendSimpleMessage(params)
-    //console.log(response)
+    console.log("response : " + response)
     return response;
   } catch (e) {
-    //console.log(e)
-    throw new Error(e);
+    console.log("ㅇㅔ러 : "+JSON.stringify(e));
+    //throw new Error(e);
+    throw e;
   }
 }
 
@@ -26,7 +27,7 @@ async function send (params = {}) {
 // }
 //send(params);
 
- exports.sendSms = (req,res) => {
+ exports.sendSms = (req) => {
     // const number = req.body.number;              // SMS 전송할 번호
     // const message = req.body.message;            // SMS 전송할 메시지
     
@@ -34,17 +35,19 @@ async function send (params = {}) {
     // console.log(" > message: " + message);
  
     try {
-           res = send({
+           const res = send({
             subject: req.subject,
             to: req.from, // req.to, //테스트중 
             text: req.text,
             type: req.type, 
             from: req.from
-        })
-        console.log(req);
+            })
+        console.log(req);
+        console.log("aa전송결과 : "+JSON.stringify(res));
        return "true";
       //res.json( {result: true} );
     } catch (e) {
+       console.log("에러는 여기로!!");
         console.log(e);
        return "sms transmission failed"; 
       //res.json( {result: false, message: 'sms transmission failed'} );

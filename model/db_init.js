@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql    = require('mysql');
 const dbConfig = require('../config/db_config');
 
 
@@ -15,9 +15,10 @@ const db =  mysql.createConnection({
 //견적요청리스트 테이블 생성 
 const create_reqQuoteList = `
 CREATE TABLE REQ_QUOTE_LIST(
-              REQ_ID          INT NOT NULL AUTO_INCREMENT
+              REQ_ID          INT NOT NULL
             , CUST_NM     varchar(20)  not null
             , TEL_NO      varchar(20)  not null
+            , REQ_DATE    varchar(20) 
             , EMAIL_ID    varchar(160)
             , EMAIL_DOWN  varchar(200)
             , UPJONG      varchar(20) 
@@ -35,6 +36,25 @@ CREATE TABLE REQ_QUOTE_LIST(
          default charset = utf8
          engine=InnoDB `;
 
+//첨부파일 테이블 생성 
+const create_reqFileList = `
+CREATE TABLE ATCH_FILE_LIST(
+              FILE_SEQ          INT NOT NULL AUTO_INCREMENT
+            , REQ_ID       INT NOT NULL
+            , ORG_FILE_NM     varchar(200)  
+            , STR_FILE_NM     varchar(200) 
+            , FILE_PATH   varchar(50)
+            , FILE_SIZE      int(15) 
+            , FILE_TYPE     varchar(50)
+            , FILE_DESCR     varchar(500) 
+            , USE_YN      varchar(1)  
+            , CREATED_DT   DATETIME not null default now()
+            , primary key(FILE_SEQ)
+         )
+         comment = '첨부파일리스트'
+         default charset = utf8
+         engine=InnoDB `;
+
 //문자발송 테이블 생성 
 const create_sendMsgList = `
 CREATE TABLE SEND_MSG_LIST(
@@ -48,6 +68,7 @@ CREATE TABLE SEND_MSG_LIST(
             , MSG_TYPE     varchar(20) 
             , SEND_YN      varchar(2)  
             , SEND_DT      DATETIME
+           , ERR_MSG   varchar(2000)
             , CREATED_DT   DATETIME not null default now()
             , primary key(SEQ)
          )
@@ -60,10 +81,15 @@ db.connect(function(err) {
   if (err) throw err;
   console.log("DB Connected!");
 	
-  //dropTable("REQ_QUOTE_LIST");
+  // dropTable("REQ_QUOTE_LIST");
+ // dropTable("ATCH_FILE_LIST");
+  //dropTable("SEND_MSG_LIST");
   
   //견적요청 테이블  생성
   createTable("REQ_QUOTE_LIST", create_reqQuoteList);
+  
+  //첨부파일 테이블  생성
+  createTable("ATCH_FILE_LIST", create_reqFileList);
   
   //문자발송 테이블  생성
   createTable("SEND_MSG_LIST", create_sendMsgList);
