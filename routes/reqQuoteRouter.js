@@ -95,8 +95,8 @@ router.post('/save', upload.array('photo', 1), function(req, res, next){
             from    : post.telNo,           // 발신번호 (보낸이 :고객)
             type    : smsConf.type          // LMS , 구분(SMS,LMS,알림톡) 
        }
-        if(DEV_YN !== 'Y'){
-          smsSend.sendSms(params,reqId,reqDate);
+        if(DEV_YN !== 'Y'){//개발 모드일때는 메세지 전송하지않도록 
+          smsSend.sendSms(params,reqId,reqDate);
         }
         
         //첨부파일 저장

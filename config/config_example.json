@@ -1,14 +1,18 @@
-{
+{ "config" : {
+    "company_name" : "업체 명"
+    ,"company_telNo" : "업체 전화번호 (메세지수신번호)"
+  },
   "db_config" : {
-     "host":""
-     ,"user": ""
+     "host":""
+     ,"user": ""
      ,"password": ""
      ,"database":""
     },
   "sms_config" :{
       "apiKey": ""
      ,"apiSecret": ""
-     ,"from": ""
-     ,"type": "SMS"
+     ,"type": "LMS"
+     ,"comp_subject" :"업체용 메시지 제목"
+     ,"cust_subject" :"고객용 메시지 제목"
     }
 }
