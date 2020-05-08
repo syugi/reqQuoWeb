@@ -30,7 +30,7 @@ router.get('/', function(req, res, next) {
 			<!-- 블로그 슬라이드--> 
 			var blogSwiper = new Swiper('.blog_contain', {
 				loop: true,
-				slidesPerView: 4,
+				slidesPerView: wrap.offsetWidth < 768 ? 2 : 3,
 				spaceBetween: 30,
 				centeredSlides: true,
 				pagination: {
@@ -38,7 +38,8 @@ router.get('/', function(req, res, next) {
 					clickable: true,
 				},
 			});
-	
+			
+
 			<!-- 회사소개 슬라이드--> 
 			var swiper = new Swiper('.company_page', {
 				loop: true,
