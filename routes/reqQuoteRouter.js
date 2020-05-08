@@ -7,7 +7,7 @@ const smsSend    = require('../lib/smsSend.js');
 const express    = require('express');
 const dateformat = require('date-format');
 const router     = express.Router();     
-var multer = require('multer');	
+const multer     = require('multer');	
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
