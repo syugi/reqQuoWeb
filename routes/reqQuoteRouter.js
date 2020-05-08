@@ -51,7 +51,7 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.post('/save', upload.array('photo', 1), function(req, res, next){
+router.post('/save', upload.array('img_file'), function(req, res, next){
 	//console.log('견적요청 전송되었습니다.');
 	//res.redirect( '/reqQuote');
    
@@ -101,26 +101,31 @@ router.post('/save', upload.array('photo', 1), function(req, res, next){
         
         //첨부파일 저장
         const files = req.files; 
+        console.log(files);
         if(is.empty(files)){
           
           console.log('견적요청 저장되었습니다.');
           res.redirect( '/reqQuote/result');
           
         }else{
-          console.log(`file inform : ${files[0].originalname},  ${files[0].filename},  ${files[0].mimetype},  ${files[0].size}`); 
 
-          const insertFileList = "INSERT INTO ATCH_FILE_LIST ( FILE_SEQ, REQ_ID, ORG_FILE_NM, STR_FILE_NM, FILE_PATH, FILE_SIZE, FILE_TYPE, FILE_DESCR, USE_YN ) VALUES (0, ?, ?, ?, ?, ?, ? ,?, ?)";
+            files.forEach((file)=>{
+            console.log(`file inform : ${file.originalname},  ${file.filename},  ${file.mimetype},  ${file.size}`); 
 
-          db.query(insertFileList , [ reqId, files[0].originalname, files[0].filename,  files[0].path, files[0].size, files[0].mimetype, '', 'Y'], function(error, result){
-            if(error){
-              console.error("첨부파일 저장 오류");
-              throw error;
-            }
+            const insertFileList = "INSERT INTO ATCH_FILE_LIST ( FILE_SEQ, REQ_ID, ORG_FILE_NM, STR_FILE_NM, FILE_PATH, FILE_SIZE, FILE_TYPE, FILE_DESCR, USE_YN ) VALUES (0, ?, ?, ?, ?, ?, ? ,?, ?)";
 
-            console.log('견적요청 저장되었습니다.');
-            res.redirect( '/reqQuote/result');
-
-          });  
+            db.query(insertFileList , [ reqId, file.originalname, file.filename,  file.path, file.size, file.mimetype, '', 'Y'], function(error, result){
+              if(error){
+                console.error("첨부파일 저장 오류");
+                throw error;
+              }        
+            });
+            
+          });
+          
+          console.log('견적요청 저장되었습니다.');
+          res.redirect( '/reqQuote/result');
+          
         }
     }); 
 

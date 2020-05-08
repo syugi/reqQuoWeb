@@ -247,7 +247,7 @@ function socialSection(){
     			  <a href="${BLOG_URL}" target="_blank"><div class="flex flex-row pr-6 pb-4"><img src="images/s_images/icon_blog.png" style="width:40px; height:40px"><span class="my-auto ml-2 text-white">네이버블로그</span></div></a>
     			  <a href="${YOUTUBE_URL}" target="_blank"><div class="flex flex-row"><img src="images/s_images/icon_youtube.png" style="width:40px; height:40px"><span class="my-auto ml-2  text-white">유튜브</span></div></a>
     			</div>
-    			 <div class="w-1/2 h-12 flex  m-auto justify-center"><a class="inline-flex my-auto " href="tel:010-7504-1822"><img src="images/s_images/icon_call.png" style="width:30px; height:30px"><span class="social_call ml-2 text-blue-400 font-semibold underline">010-7504-1822</span></div></a>
+    			 <div class="w-1/2 h-12 flex  m-auto justify-center"><a class="inline-flex my-auto " href="tel:010-7504-1822"><img src="images/s_images/icon_call.png" style="width:30px; height:30px"><span class="social_call ml-2 pt-1 text-white font-semibold">010-7504-1822</span></div></a>
 
     		</section>`;			
 }

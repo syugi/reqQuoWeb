@@ -379,7 +379,7 @@ span.dot{
     width: 100%;
     	background-color: #718096;
     /*background-color: var(--base1-color);*/
-    padding:20px;
+    padding:30px 40px;
 }
 
     
@@ -388,7 +388,8 @@ span.dot{
     order:10;
     width:100%;
     /*background:var(--dark-color);*/
-    background-color: #4a5568;
+    /* background-color: #4a5568; */
+    background-color: #2d3748;
 }
 
 .footer p{
