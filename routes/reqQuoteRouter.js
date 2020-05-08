@@ -34,7 +34,6 @@ const upload = multer({
   } 
 });
 
-
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   const title = config.company_name;
