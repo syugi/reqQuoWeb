@@ -14,31 +14,31 @@ function formSection(){
 	return `
 		<section class="form_section">
 
-      <form method="POST" enctype="multipart/form-data" action="/reqQuote/save">  
+      <form method="POST" onsubmit="return validate();" enctype="multipart/form-data" action="/reqQuote/save">  
 				<!-- 기본정보 -->
 				<div class="subTitle py-4 font-bold text-2xl">기본정보</div>
 				<label class="block py-3">
 					<span class="text-gray-70">이름</span><span class="text-blue-500 pl-1">*</span>
-					<input class="form-input mt-1 block w-full" type="text" name="custNm"  placeholder="이름을 입력해주세요">
+					<input class="form-input mt-1 block w-full" type="text" name="custNm" id="custNm" placeholder="이름을 입력해주세요">
 				</label>
 				<label class="block py-3">
 					<span class="text-gray-700">휴대폰 번호</span><span class="text-blue-500 pl-1">*</span>
-					<input class="form-input mt-1 block w-full" type="text" name="telNo" placeholder="숫자만 입력해주세요">
+					<input class="form-input mt-1 block w-full" type="text" name="telNo" id="telNo" placeholder="숫자만 입력해주세요">
 				</label>
 				
 				<!-- 상세정보 -->
         <div class="subTitle py-4 font-bold text-2xl">상세정보</div>
 				<label class="block mt-4  py-2">
 					<span class="text-gray-700">업종</span>
-					<select class="form-select mt-1 block w-full" name="upjong">
-					  <option >누수</option>
+					<select id="upjongSelect" class="form-select mt-1 block w-full" name="upjong" onchange="chageUpjongSelect()">
+					  <option>누수</option>
 					  <option>변기</option>
 					  <option>보일러</option>
 					  <option>기타</option>
 					</select>
 				</label>
 
-				<div class="mt-4 py-2">
+				<div class="mt-4 py-2" id="boilerTypeDiv" style ="display:none">
 					<span class="text-gray-700">보일러 구분</span>
 					<div class="mt-2">
 					  <label class="inline-flex items-center">
@@ -87,7 +87,7 @@ function formSection(){
 					<span class="text-gray-700">견적요청자</span>
 					<div class="mt-2">
 					  <label class="inline-flex items-center">
-						<input type="radio" class="form-radio" name="custType" value="주인">
+						<input type="radio" class="form-radio" name="custType" value="주인" checked>
 						<span class="ml-2">주인</span>
 					  </label>
 					  <label class="inline-flex items-center ml-6">

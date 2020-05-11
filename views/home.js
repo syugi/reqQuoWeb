@@ -97,17 +97,40 @@ function blogSection(){
 	// });
 	
 	const dataList = [
-		{  	title:"바닥에서 물이 올라와요.",  
-			content:"빌라 데코타일 장판에서 물이 올라와요 물을 닦아도 계속 여기저기서 물이 올라오네요..." , 
-			img:"blogImg_01.jpg"  
+		{  	title:"난방 방 하나가 안 따듯해요? 부평동 누수탐지 순환 안되는 방 해결~",  
+			content:`난방 순환이 언제부터안 되는건지 처음부터 안된 건지 알 수는 없지만 지금 살고 있는 집에서 8년을 살았다는데
+처음부터 이곳 방만 차가웠던것같아요 원인을 알고 싶다고
+저희 누수탐지 전문 업체에 전화 주셨네요
+모든 경험을 통해서 난방 순환이 안되는 곳을 해결해볼게요 ...` , 
+			img:"blog_01.jpg" ,
+      url:"https://m.blog.naver.com/h0661h/221756313902"
 		},
-		{  	title:"싱크대 하수도막힘을 더이상 바닥으로 누수되지않게 보수까지 한번에",  
-			content:"아파트 싱크대가 막혀서 바닥으로 물이 흐르네요 장비를 이용해서 배수구를 뚫었어요..." , 
-			img:"blogImg_02.jpg"  
+		{  	title:"화장실에서 떨어지는 물 변기 누수 원인 확인했어요 변기 배수구 방수",  
+			content:`아래층 화장실 천장에서 물의 떨어지는데 원인을 알 수 없어서 계량기를 확인해보니
+ 배관 쪽에서는 누수될 확률이 없네요
+누수가 된다면 화장실인데 화장실에서도 제일 의심되는 부분이 변기네요
+변기를 탈착해보니 ...` , 
+			img:"blog_02.jpg" ,
+      url:"https://m.blog.naver.com/h0661h/221637790128"
 		},
-		{  	title:"변기에 칫솔이 들어갔어요",  
-			content:"인천 청라동 변기가 막혀서 방문했어요  아이가 양치하다가 칫솔이 들어갔다네요..." , 
-			img:"blogImg_03.jpg"  
+		{  	title:"수도 배관 누수 산곡동 아파트 보일러실에서 물이흘러나와요 인천누수",  
+			content:`청천동 아파트 누수 물이 많이 떨어져서 누수탐지 장비를 이용해서 누수탐지를 시작해봅니다
+어느 위치에서 새는 건지 장비를 이용해야 정확한 지점을 확인할 수 있어요 ...` , 
+			img:"blog_03.jpg"  ,
+      url:"https://m.blog.naver.com/h0661h/221900989320"
+		},
+    {  	title:"화장실누수 화장실 부분 방수 바닥유가 방수로 아래층누수 잡히길~",  
+			content:`화장실 아래층천장 부분에서 누수가 되는데 특별히 물을 많이 사용하는 것도 아닌데
+ 어디서 누수가 되는지 도무지 알 수 없네요
+화장실 전체 공사를 해야하지만 부분적으로 방수를해보고 차도가없을시 최후방법을 선택하고자 저희업체에의뢰를하였다네요 ..` , 
+			img:"blog_04.jpg"  ,
+      url:"https://m.blog.naver.com/h0661h/221600408843"
+		},
+    {  	title:"수도배관 누수 외벽으로 흐르는 물 열화상으로 체크했어요 인천누수",  
+			content:`빌라 외벽으로 누수가 되는데 수도계량기가 돌아가지않아서 내 집에서 누수가 아닌거같아  일주일 정도 방치했다네요
+ 이곳은 바로 누수탐지장비를 이용해서 누수 검사 시작해보렵니다 ...` , 
+			img:"blog_05.jpg"  ,
+      url:"https://m.blog.naver.com/h0661h/221886456419"
 		}
 	];
 
@@ -115,12 +138,12 @@ function blogSection(){
 	let list = '';
 	dataList.forEach((data)=>{
 		list += `<div class="blog-slide swiper-slide w-full lg:w-1/3 md:mx-2 mb-4 md:mb-0">
-					<div class="bg-white rounded-lg overflow-hidden shadow relative">
+					<div class="bg-white rounded-lg overflow-hidden shadow relative" onclick="window.open('${data.url}')">
 					  <img class="h-56 w-full object-cover object-center" src="images/p_images/${data.img}" alt="">
 					  <div class="p-4 h-auto md:h-40 lg:h-48">
-						<a href="#" class="block text-blue-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-lg">
+						<div class="block text-blue-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-lg">
 						  ${data.title}
-						</a>
+						</div>
 						<div class="text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-sm">
 						${data.content}
 						</div>
@@ -135,7 +158,7 @@ function blogSection(){
 
 	return `<section class="blog_section">
 			<h2 class="text-center p-4 font-bold text-2xl">시공사례
-			  <button id = "blog_more_btn" class="absolute right-0 mr-4 bg-gray-300 hover:bg-grey text-grey-dark font-semibold py-2 px-4 border border-grey hover:border-transparent rounded mr-2 float-right text-xs hover:text-white" onclick="window.open('http://blog.naver.com/h0661h') ">더보기..</button> 
+			  <button id = "blog_more_btn" class="absolute right-0 mr-4 bg-gray-300 hover:bg-grey text-grey-dark font-semibold py-2 px-4 border border-grey hover:border-transparent rounded mr-2 float-right text-xs hover:text-white" onclick="window.open('${BLOG_URL}') ">더보기..</button> 
 			</h2>
 			  <div class="px-4">
 				<div class="blog_contain swiper-container block md:flex justify-between md:-mx-2">
@@ -191,7 +214,7 @@ function companySection(){
 		{ titleList : ["#부부출장","#블로그운영"] , 
 		  content   : `부부가 함께 출장나갑니다.<br>
                             여자 혼자사셔도 걱정마세요! 사장님이 시공하시고 사모님이 옆에서 친절히 설명드립니다. 사모님이 직접 운영하시는 블로그에서는 다양한 시공사례도 확인 하실수 있습니다. <br>
-                           <a href="http://blog.naver.com/h0661h" target="_blank" class="text-blue-500 underline font-semibold pt-2">한국건축설비누수 블로그 보러가기</a>`,
+                           <a href="${BLOG_URL}" target="_blank" class="text-blue-500 underline font-semibold pt-2">한국건축설비누수 블로그 보러가기</a>`,
 		  img       : "company_03.jpg"  
 		},
 		{ titleList : ["#하자보수","#최대 2년간 보증","#무료 A/S"] , 

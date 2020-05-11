@@ -1,6 +1,7 @@
 // 우편번호 찾기 찾기 화면을 넣을 element
 var element_wrap = document.getElementById('post_wrap');
 
+
 function foldDaumPostcode() {
     // iframe을 넣은 element를 안보이게 한다.
     element_wrap.style.display = 'none';
@@ -72,9 +73,42 @@ function sample3_execDaumPostcode() {
     element_wrap.style.display = 'block';
 }
 
+function validate(){
+  var custNm = document.getElementById('custNm');
+  var telNo  = document.getElementById('telNo' );
+
+  if(custNm.value==""){
+     alert("이름을 입력해 주세요");
+     custNm.focus();
+     return false;
+  }
+  
+  if(telNo.value==""){
+     alert("휴대폰 번호를 입력해 주세요");
+     telNo.focus();
+     return false;
+  }
+  
+}
+
+function chageUpjongSelect(){
+  var upjongSelect  = document.getElementById("upjongSelect");
+  var boilerType    = document.getElementById("boilerTypeDiv"); 
+  
+  var upjong  = upjongSelect.options[upjongSelect.selectedIndex].value;
+  
+  if(upjong == "보일러"){
+    boilerType.style.display = "block";
+  }else{
+    boilerType.style.display = "none";
+  }
+  
+  
+}
 
 function init(){
-  
+ 
+  
 }
 
 
