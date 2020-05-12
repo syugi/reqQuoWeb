@@ -74,8 +74,9 @@ function sample3_execDaumPostcode() {
 }
 
 function validate(){
-  var custNm = document.getElementById('custNm');
-  var telNo  = document.getElementById('telNo' );
+  var custNm        = document.getElementById('custNm');
+  var telNo         = document.getElementById('telNo' );
+  var privacyAgree  = document.getElementById('privacyAgree' );
 
   if(custNm.value==""){
      alert("이름을 입력해 주세요");
@@ -88,6 +89,12 @@ function validate(){
      telNo.focus();
      return false;
   }
+  
+  
+  // if(privacyAgree.checked!=true){
+  // alert("개인정보수집 및 이용 미동의");
+  //    return false;
+  // }
   
 }
 

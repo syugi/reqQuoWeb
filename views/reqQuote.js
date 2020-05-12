@@ -87,7 +87,7 @@ function formSection(){
 					<span class="text-gray-700">견적요청자</span>
 					<div class="mt-2">
 					  <label class="inline-flex items-center">
-						<input type="radio" class="form-radio" name="custType" value="주인" checked>
+						<input type="radio" class="form-radio" name="custType" value="주인">
 						<span class="ml-2">주인</span>
 					  </label>
 					  <label class="inline-flex items-center ml-6">
