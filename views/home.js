@@ -141,10 +141,10 @@ function blogSection(){
 					<div class="bg-white rounded-lg overflow-hidden shadow relative" onclick="window.open('${data.url}')">
 					  <img class="h-56 w-full object-cover object-center" src="images/p_images/${data.img}" alt="">
 					  <div class="p-4 h-auto md:h-40 lg:h-48">
-						<div class="block text-blue-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-lg">
+						<div class="block text-blue-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-base leading-tight">
 						  ${data.title}
 						</div>
-						<div class="text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-sm">
+						<div class="text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-xs">
 						${data.content}
 						</div>
 						<!--<div class="relative mt-2 lg:absolute bottom-0 mb-4 md:hidden lg:block">

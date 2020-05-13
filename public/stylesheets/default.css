@@ -227,7 +227,7 @@ span.dot{
     width:100%;
     padding-left:5%;
     padding-right:5%;
-    padding-bottom: 5%;
+    padding-bottom: 3%;
     margin-top:20px;
     background: #f2f2f2;
 
@@ -244,8 +244,9 @@ span.dot{
 .category_list li{
     display:flex;
     width: 30%;
-    margin-top:20px;
-    margin-top:1.250rem;
+    margin-top:3%;
+    /* margin-top:20px;
+    margin-top:1.250rem; */
 }
 
 .category_list li a{
@@ -265,10 +266,10 @@ span.dot{
     padding : 5px;
 }
 .category_list li figcaption{
-    margin-top:10px;
-    margin-top:0.625rem;
-    font-size:1.188em;
-    font-size:1.188rem;
+    margin-top:0.75em;
+    margin-top:0.75rem;
+    font-size:1em;
+    font-size:1rem;
     text-align:center;
     text-transform:uppercase;
     color: #2c3e50;

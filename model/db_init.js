@@ -82,8 +82,8 @@ db.connect(function(err) {
   if (err) throw err;
   console.log("DB Connected!");
 	
-  // dropTable("REQ_QUOTE_LIST");
- // dropTable("ATCH_FILE_LIST");
+   //dropTable("REQ_QUOTE_LIST");
+  //dropTable("ATCH_FILE_LIST");
   //dropTable("SEND_MSG_LIST");
   
   //견적요청 테이블  생성
