@@ -208,7 +208,7 @@ function companySection(){
 		  img       : "company_01.jpg"  
 		},
 		{ titleList : ["#20년경력 전문가","#꼼꼼한 사장님","#직접시공"] , 
-		  content   : "한국건축설비누수는 가스2종 난방2종 전문건설업 등록업체이며 가스탐지기, 관로탐지기, 열화상카메라 등의 전문장비를 보유하고있는 누수탐지전문공사업체 입니다.",
+		  content   : "20여년 경력을 가지신 사장님이 상담 부터 시공 및 하자보수까지 모두 직접 해드립니다. 모든일에 책임감도 강하신 분이라 남들보다 꼼꼼히 처리합니다",
 		  img       : "company_02.jpg"  
 		},
 		{ titleList : ["#부부출장","#블로그운영"] , 
@@ -271,6 +271,5 @@ function socialSection(){
     			  <a href="${YOUTUBE_URL}" target="_blank"><div class="flex flex-row"><img src="images/s_images/icon_youtube.png" style="width:40px; height:40px"><span class="my-auto ml-2  text-white">유튜브</span></div></a>
     			</div>
     			 <div class="w-1/2 h-12 flex  m-auto justify-center"><a class="inline-flex my-auto " href="tel:010-7504-1822"><img src="images/s_images/icon_call.png" style="width:30px; height:30px"><span class="social_call ml-2 pt-1 text-white font-semibold">010-7504-1822</span></div></a>
-
     		</section>`;			
 }

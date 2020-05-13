@@ -39,17 +39,18 @@ CREATE TABLE REQ_QUOTE_LIST(
 //첨부파일 테이블 생성 
 const create_reqFileList = `
 CREATE TABLE ATCH_FILE_LIST(
-              FILE_SEQ          INT NOT NULL AUTO_INCREMENT
-            , REQ_ID       INT NOT NULL
-            , ORG_FILE_NM     varchar(200)  
+              SEQ                     INT NOT NULL AUTO_INCREMENT
+            , FILE_SEQ            INT  NOT NULL
+            , REQ_ID                INT NOT NULL
+            , ORG_FILE_NM    varchar(200)  
             , STR_FILE_NM     varchar(200) 
-            , FILE_PATH   varchar(50)
-            , FILE_SIZE      int(15) 
-            , FILE_TYPE     varchar(50)
-            , FILE_DESCR     varchar(500) 
-            , USE_YN      varchar(1)  
-            , CREATED_DT   DATETIME not null default now()
-            , primary key(FILE_SEQ)
+            , FILE_PATH          varchar(50)
+            , FILE_SIZE           int(15) 
+            , FILE_TYPE          varchar(50)
+            , FILE_DESCR       varchar(500) 
+            , USE_YN              varchar(1)  
+            , CREATED_DT    DATETIME not null default now()
+            , primary key(SEQ)
          )
          comment = '첨부파일리스트'
          default charset = utf8

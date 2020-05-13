@@ -30,7 +30,7 @@ router.get('/', function(req, res, next) {
 			<!-- 블로그 슬라이드--> 
 			var blogSwiper = new Swiper('.blog_contain', {
 				loop: true,
-				slidesPerView: wrap.offsetWidth < 768 ? 2 : 3,
+				slidesPerView: wrap.offsetWidth < 768 ? 2 : 4,
 				spaceBetween: 30,
 				centeredSlides: true,
 				pagination: {

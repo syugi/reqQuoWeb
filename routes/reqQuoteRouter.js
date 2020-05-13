@@ -108,12 +108,12 @@ router.post('/save', upload.array('img_file'), function(req, res, next){
           
         }else{
 
-            files.forEach((file)=>{
+            files.forEach((file, index)=>{
             console.log(`file inform : ${file.originalname},  ${file.filename},  ${file.mimetype},  ${file.size}`); 
 
-            const insertFileList = "INSERT INTO ATCH_FILE_LIST ( FILE_SEQ, REQ_ID, ORG_FILE_NM, STR_FILE_NM, FILE_PATH, FILE_SIZE, FILE_TYPE, FILE_DESCR, USE_YN ) VALUES (0, ?, ?, ?, ?, ?, ? ,?, ?)";
+            const insertFileList = "INSERT INTO ATCH_FILE_LIST ( FILE_SEQ, REQ_ID, ORG_FILE_NM, STR_FILE_NM, FILE_PATH, FILE_SIZE, FILE_TYPE, FILE_DESCR, USE_YN ) VALUES (?, ?, ?, ?, ?, ?, ? ,?, ?)";
 
-            db.query(insertFileList , [ reqId, file.originalname, file.filename,  file.path, file.size, file.mimetype, '', 'Y'], function(error, result){
+            db.query(insertFileList , [ index, reqId, file.originalname, file.filename,  file.path, file.size, file.mimetype, '', 'Y'], function(error, result){
               if(error){
                 console.error("첨부파일 저장 오류");
                 throw error;

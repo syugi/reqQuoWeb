@@ -93,9 +93,6 @@ function init(){
        }
     }); 
 
-
-    //견적요청 테스트 중
-    //location.href="reqQuote.html";
 }
 
 

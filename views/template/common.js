@@ -37,10 +37,10 @@ exports.header = function(){
 exports.footer = function(){
 
 	return `
-    <div class="m-10 text-gray-300">
-      <div class="pb-3">한국건축설비누수  |  대표:허재균  |  사업자등록번호:122-14-63748</div>
-      <div class="pb-3">주소: 인천 부평구 부평동 191-10</div> 
-      <div>copyright&copy;${TITLE} all rights reserved.</div>
+    <div class="mx-10 text-gray-300 text-xs">
+      <div>한국건축설비누수  |  대표:허재균  |  사업자등록번호:122-14-63748</div>
+      <div class="pb-2">주소: 인천 부평구 부평동 191-10</div> 
+      <div class="pb-4">copyright&copy;${TITLE} all rights reserved.</div>
     </div> `;
 }
 
