@@ -20,7 +20,6 @@ const config     = require('../config/config');
 //   res.send(html);
 // });
 
-
 router.get('/', function(req, res, next) {
    
    const sql = "SELECT REQ_ID, CUST_NM, TEL_NO, EMAIL_ID, EMAIL_DOWN, UPJONG, BOILER_TYPE, POST_CODE, ADDR, DTL_ADDR,EXT_ADDR, DESCR, CUST_TYPE, CREATED_DT FROM REQ_QUOTE_LIST ORDER BY REQ_ID DESC";
@@ -31,34 +30,38 @@ router.get('/', function(req, res, next) {
       }
      
       console.log(result);
-     
+
      let list = `<table class="min-w-full bg-white">
-     <thead class="bg-gray-800 text-white">
-        <tr>
+     <thead style="width:100%;" class="bg-gray-800 text-white">
+        <tr >
           <th class="text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
           <th class="text-left py-3 px-4 uppercase font-semibold text-sm">요청자</th>
           <th class="text-left py-3 px-4 uppercase font-semibold text-sm">휴대폰번호</th>
+          <th class="text-left py-3 px-4 uppercase font-semibold text-sm hidden md:table-cell">요청업종</td>
+          <th colspan="3" class="text-left py-3 px-4 uppercase font-semibold text-sm hidden md:table-cell">주소</th>
           <th class="text-left py-3 px-4 uppercase font-semibold text-sm"></th>
         </tr>
-        <tr>
+       <!-- <tr>
           <th class="text-left py-3 px-4 uppercase font-semibold text-sm">요청업종</td>
           <th colspan="3" class="text-left py-3 px-4 uppercase font-semibold text-sm">주소</th>
-        </tr>
+        </tr> -->
       </thead>
       <tbody class="text-gray-700">`;
      
       result.forEach((data)=>{
-        list += '<tr>';
+        list += '<tr style="border-bottom:1px solid #dedede;">';
         list += `<td class="text-left py-3 px-4">${data.REQ_ID}</td>`;
-        list += `<td class="text-left py-3 px-4">${data.CUST_NM}</td>`;
-        list += `<td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:${data.TEL_NO}">${data.TEL_NO}</a></td>`;
-        list += `<td class="text-left py-3 px-4 w-20">
-                 <!-- <a href="#" class="text-grey-lighter font-bold py-1 px-1 rounded text-xs bg-green hover:bg-green-dark">Edit</a>-->
-                      <a href="/admin/detail?id=${data.REQ_ID}"  class="font-bold text-xs">상세보기</a>
-                </td>`;
-        list += '</tr><tr>';
-        list += `<td class="text-left py-3 px-4">${data.UPJONG}</td>`;
-        list += `<td colspan="3" class="text-left py-3 px-4" >${data.ADDR}</td>`;
+         list += `<td class="text-left py-3 px-4">${data.CUST_NM}</td>`;
+         list += `<td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:${data.TEL_NO}">${data.TEL_NO}</a></td>`;
+         list += `<td class="text-left py-3 px-4 hidden md:table-cell">${data.UPJONG}</td>`;
+        list += `<td colspan="3" class="text-left py-3 px-4 hidden md:table-cell" >${data.ADDR}</td>`;
+         list += `<td class="text-left py-3 px-4 w-20"> 
+         <!-- <a href="#" class="text-grey-lighter font-bold py-1 px-1 rounded text-xs bg-green hover:bg-green-dark">Edit</a>-->
+             <a href="/admin/detail?id=${data.REQ_ID}"  class="font-bold text-xs bg-green">상세보기</a>
+         </td> `;
+        // list += '</tr><tr>';
+        // list += `<td class="text-left py-3 px-4">${data.UPJONG}</td>`;
+        // list += `<td colspan="3" class="text-left py-3 px-4" >${data.ADDR}</td>`;
         list += '</tr>';
       });		
 
@@ -68,7 +71,7 @@ router.get('/', function(req, res, next) {
       const title = config.company_name;
       const body  = `<section style="order:3; width:100%; ">
               <div class="py-4 font-bold text-2xl">견적현황</div>
-              <div class="shadow overflow-hidden rounded border-b border-gray-200">
+              <div style="max-height:500px;" class="shadow overflow-auto rounded border-b border-gray-200 ">
               ${list}
               </div>
              </section>`;
@@ -111,7 +114,7 @@ router.get('/detail', function(req, res, next) {
        
           const title = config.company_name;
           const body  = `-
-                <section style="order:3; width:100%; background: #f2f2f2;">
+                <section style="order:3; width:100%; overflow:auto background: #f2f2f2;">
                   <form method="POST" enctype="multipart/form-data" action="/admin/confirm">  
                     <table>
                       <tr class="hidden">
@@ -154,7 +157,7 @@ router.get('/detail', function(req, res, next) {
                   </form>
                  </section>
 `;
-          const link  = `<link rel="stylesheet" href="/stylesheets/reqQuote.css">`;
+          const link  = ``;
           const script = ``;
           const html = template.HTML(title,link, body,script);
           res.send(html); 
