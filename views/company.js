@@ -3,38 +3,38 @@ const BLOG_URL = "http://blog.naver.com/h0661h";
 module.exports = {
 	
 	html:function(){
-		 return  category_section()
-           + introSection();
+		 return  tab_section()
+           + introSection();  
 	}
   ,ceo:function(){
-		 return  category_section()
+		 return  tab_section()
            + ceoSection();
 	}
   ,tech:function(){
-		 return  category_section()
+		 return  tab_section()
            + techSection();
 	}
   ,equip:function(){
-		 return  category_section()
+		 return  tab_section()
            + equipSection();
 	}
 }
 	
-function category_section(){
-	return `<section style="order:3;" class="category_section bg-indigo-dark h-50 p-8">
-              <div class="container mx-auto py-8">
-                <nav class="flex">
-                  <a class="no-underline text-white py-3 px-4 font-medium mr-3 bg-indigo hover:bg-indigo-darker" href="/company">회사소개</a>
-                  <a class="no-underline text-white py-3 px-4 font-medium mx-3 bg-indigo-darker hover:bg-indigo" href="/company?category=ceo">CEO인사말</a>
-                  <a class="no-underline text-white py-3 px-4 font-medium mx-3 bg-indigo hover:bg-indigo-darker" href="/company?category=tech">기술자격보유현황</a>
-                  <a class="no-underline text-white py-3 px-4 font-medium mx-3 bg-indigo-darker hover:bg-indigo" href="/company?category=equip">보유장비</a>          
-              </nav>
+function tab_section(){
+	return `<section style="order:3;" class="tab_section w-full h-50 pb-4 bg-indigo-dark">
+              <div class="container mx-auto">
+				<nav class="flex">
+					<a class="no-underline text-white py-3 px-4 font-medium mr-3 bg-indigo-400 hover:bg-indigo-600" href="/company">회사소개</a>
+					<a class="no-underline text-white py-3 px-4 font-medium mx-3 bg-indigo-400 hover:bg-indigo-600" href="/company?category=ceo">CEO인사말</a>
+					<a class="no-underline text-white py-3 px-4 font-medium mx-3 bg-indigo-400 hover:bg-indigo-600" href="/company?category=tech">기술자격보유현황</a>
+					<a class="no-underline text-white py-3 px-4 font-medium mx-3 bg-indigo-400 hover:bg-indigo-600" href="/company?category=equip">보유장비</a>          
+				</nav>
           </div>
 			</section>`;
 }
         
 function introSection(){
-	return `<section style="order:4;" class="intro_section">
+	return `<section style="order:4; height:500px" class="p-4 intro_section">
 				
 				<p>1. 한국건축설비누수는 가스2종 난방2종 전문건설업 등록업체이며 가스탐지기, 관로탐지기, 열화상카메라 등의 전문장비를 보유하고있는 누수탐지전문공사업체 입니다.</p>
         <p>2. 20여년 경력을 가지신 사장님이 상담 부터 시공 및 하자보수까지 모두 직접 해드립니다. 모든일에 책임감도 강하신 분이라 남들보다 꼼꼼히 처리합니다 </p>
@@ -50,32 +50,26 @@ function introSection(){
 
 
 function ceoSection(){
-	return `<section style="order:4;" class="ceo_section">
+	return `<section style="order:4; height:500px" class="p-4 ceo_section">
 				<h2>안녕하십니까? 저희 홈페이지를 찾아주셔서 감사합니다.</h2>
 				<h2>한국건축설비누수 허재균입니다.</h2>
-				<p>20여년의 실무경험과 기술을 바탕으로 누수탐지 업계의 선두업체로 성실 시공과 책임있는 하자 보수로 고객 여러분께 꼼꼼한 누수공사 약속 드리겠습니다.
-              감사합니다.
-        </p>
-
+				<p>20여년의 실무경험과 기술을 바탕으로 누수탐지 업계의 선두업체로 성실 시공과 책임있는 하자 보수로 고객 여러분께 꼼꼼한 누수공사 약속 드리겠습니다.감사합니다.
+				</p>
 			</section>`;
 }
 
 function techSection(){
-	return `<section style="order:4;" class="tech_section">
-       <div>기술자격현황</div>
-      
+	return `<section style="order:4; height:500px" class="p-4 tech_section">
+				<h2>기술자격현황.</h2>
+				
 			</section>`;
 }
 
 function equipSection(){
-	return `<section style="order:4;" class="equip_section">
-        <h2>보유장비</h2>
-       <div>가스탐지기</div>
-       <div>청음탐지기</div>
-       <div>관로탐지기</div>
-       <div>열화상카메라</div>
-       <div>내시경카메라</div>
-			
+	return `<section style="order:4; height:500px" class="p-4 ceo_section">
+				<h2>보유장비</h2>
+				<div>가스탐지기</div>
+				<div>청음탐지기</div>
 			</section>`;
 }
 	
