@@ -157,7 +157,7 @@ router.get('/detail', function(req, res, next) {
                   </form>
                  </section>
 `;
-          const link  = ``;
+          const link  = `<link rel="stylesheet" href="/stylesheets/reqQuote.css">`;
           const script = ``;
           const html = template.HTML(title,link, body,script);
           res.send(html); 

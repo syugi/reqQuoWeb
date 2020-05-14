@@ -37,7 +37,7 @@ exports.HTML = function(title, link, body , script){
 	  </html>
 				
 	  <script src="/javascripts/index.js"></script>
-
+   
 		${script}
 	  `;
   
