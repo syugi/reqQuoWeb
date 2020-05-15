@@ -37,17 +37,6 @@ function fn_plusSlide(){
     fn_setDots(currIdx); // 페이지 점 표시 
 }
 
-
-//메뉴 토글 버튼
-function fn_menuToggle(){
-     const gnb = document.querySelector(".gnb"); //메뉴 
-     if( gnb.style.display == "block"){
-        gnb.style.display = "none";
-     }else{
-       gnb.style.display = "block";
-     }
-}
-
 function init(){
     const prevBtn = document.querySelector("#prev_btn"), //이전버튼 
     nextBtn = document.querySelector("#next_btn");       //다음버튼 
@@ -72,6 +61,10 @@ function init(){
     slider_section.addEventListener('mouseover', () => {
         //  this.classList.add('active');
         clearInterval(autoSlider);
+
+        //이전,다음 버튼 보이기
+        prevBtn.style.display = "";
+        nextBtn.style.display = "";
     });
 
     //마우스 안올리면 슬라이드 진행 
@@ -80,19 +73,13 @@ function init(){
         autoSlider = setInterval(function () {
             fn_plusSlide();
         }, 3000);
+        
+        //이전,다음 버튼 숨기기 
+        prevBtn.style.display = "none";
+        nextBtn.style.display = "none";
+
     });
     
-    
-    //메뉴버튼 
-    document.querySelector(".menu_toggle_btn").addEventListener("click", () => {
-        const gnb = document.querySelector(".gnb"); //메뉴 
-       if( gnb.style.display == "block"){
-          gnb.style.display = "none";
-       }else{
-         gnb.style.display = "block";
-       }
-    }); 
-
 }
 
 

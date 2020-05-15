@@ -1,11 +1,6 @@
 @charset "utf-8";
 
 :root{
-    --point-color : #2b90d9;
-    --base1-color : #d9e1e8;
-    --base2-color : #9baec8;
-    --dark-color : #282c37;
-
 }
  
 /* 모바일용 CSS */
@@ -15,7 +10,7 @@
     flex-flow:column nowrap;
     width:100%;
     margin:0 auto;
-    max-width:1200px;
+    /* max-width:1200px; */
 }
 
 #wrap section{
@@ -47,8 +42,7 @@
 .logo a{
     font-size: 1.55em;
     font-size: 1.55rem;
-    color:var(--dark-color);
-   
+    font-weight: 700;
 }
 
 .nav{
@@ -63,6 +57,7 @@
 
 .gnb li{
     display:flex;
+    border-bottom:1px solid #dedede;
     /* background:var(--point-color); */
 }
 
@@ -74,10 +69,8 @@
     font-size:0.938rem;
     text-indent:20px;
     text-indent:1.250rem;
-    font-weight:bold;
+    /* font-weight:bold; */
     text-transform:uppercase;
-    color:var(--dark-color);
-
 }
 
 .gnb li span{
@@ -204,17 +197,19 @@ span.dot{
 .slider_contents {
     position: absolute;
     top: 30%;
-    margin-left: 60px;
+    margin-left: 30px;
 }
 
 .slider_contents div{
     color:white;
     padding-top: 20px;   
-    text-shadow: 0 0 1px rgb(0, 0, 0); 
+    /* text-shadow: 0 0 1px rgb(0, 0, 0);  */
 }
 
 .slider_txt_lg{
-    font-size: 1.875rem;
+    /* font-size: 1.875rem; */
+    font-size: 40px;
+    font-weight: 600;
 }
 
 .slider_txt{
@@ -229,7 +224,7 @@ span.dot{
     padding-left:5%;
     padding-right:5%;
     padding-bottom: 3%;
-    margin-top:20px;
+    margin-top:50px;
     background: #f2f2f2;
 
 }
@@ -286,7 +281,7 @@ span.dot{
     flex-direction: column;
     order:5;
     width:100%;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .blog_contain{
@@ -300,15 +295,15 @@ span.dot{
     order: 6;
     display:flex;
     flex-flow:row;
-    width:100%;
-    margin: 2% 0% 2%;
+    /* width:100%; */
+    margin: 50px 5%;
     justify-content: space-around;
 }
 .icon_img{
-    width: 30%;
-    margin: 2%;
+    width: 20%;
+    margin: 2% 0%;
     text-align: center;
-   
+   max-width: 150px;
 }
 .icon_img img{
     width: 70%;
@@ -316,12 +311,11 @@ span.dot{
 }
 
 .icon_arrow{
-  width:10%;
-  height: 10%;
-  /*margin:2% auto;*/
+  width:20px;
+  height:20px;
+  margin-left: auto;
   transform: rotate(-90deg);
-  /*margin-left:5%;*/
-  margin-top:10%;
+  align-self: center;
 } 
 
 /* 회사소개 영역 CSS */
@@ -354,7 +348,7 @@ span.dot{
 }
 
 .company_contents ul{
-  padding:20px 10px;
+  padding:20px;
   font-size :1.125rem;
 }
 
@@ -364,8 +358,9 @@ span.dot{
   	font-weight: 600;
 }
 .company_contents div{
-  padding-left:10px;
-  padding-bottom:20px;
+  padding : 0px 20px 20px;
+  /* padding-left:10px;
+  padding-bottom:20px; */
   line-height:160%;
 }
 
@@ -463,13 +458,20 @@ margin-top:-0.938rem;
 
 /* 슬라이더 영역 CSS */
 .slider_section{
-    height:400px;
+    height:500px;
 }
 
 .slider_contents {
     top: 25%;
     margin-left: 70px;
 }
+
+.slider_txt_lg{
+    /* font-size: 3rem; */
+    font-size: 60px;
+    font-weight: 600;
+}
+
 
 /* 카테고리 영역 CSS */
 .category_section{
@@ -502,6 +504,8 @@ margin-top:-0.938rem;
 /* 아이콘 영역 CSS */
 .icon_section{
     order: 6;
+    width:80%;
+    margin: 50px auto;
 }
 
 .icon_arrow{
@@ -581,7 +585,7 @@ position:static;
 display:flex;
 align-items:center;
 position:static;
-width:80%;
+width:40%;
 }
 
 .gnb{
@@ -596,6 +600,8 @@ width:100%;
 display:block;
 margin-left:10%;
 background:none;
+border-bottom: 0px;
+
 }
 
 .gnb li a{
@@ -615,11 +621,11 @@ display:none;
 
 /* 슬라이더 영역 CSS */
 .slider_section{
-    height:500px;
+    height:750px;
 }
 
 .slider_txt_lg{
-    font-size: 3rem;
+    /* font-size: 3rem; */
 }
 
 .slider_txt{
@@ -653,6 +659,11 @@ display:none;
 /* 아이콘 영역 CSS */
 .icon_section{
 }
+
+.icon_arrow{
+    width:30px;
+    height:30px;
+  } 
 
 /* 회사소개 영역 CSS */
 .company_section{

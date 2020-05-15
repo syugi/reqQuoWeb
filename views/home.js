@@ -21,10 +21,11 @@ module.exports = {
 function sliderSection(){
 
 	const dataList = [
+		{str1 : '베란다에서', str2 : '물이 떨어져요..' , img : "slide_04.jpg"},
 		{str1 : '천장에서', str2 : '물이새요...' , img : "slide_01.jpg"},
 		{str1 : '변기가', str2 : '막혔어요...' , img : "slide_02.jpg"},
-		{str1 : '욕조호스가', str2 : '빠졌어요...' , img : "slide_03.jpg"},
-		{str1 : '베란다에서', str2 : '물이 떨어져요..' , img : "slide_04.jpg"}
+		{str1 : '욕조호스가', str2 : '빠졌어요...' , img : "slide_03.jpg"}
+		
 	];
 
 	let list = '<ul class="slider_img">';
@@ -34,7 +35,7 @@ function sliderSection(){
 		list += `<div class="slider_txt_lg">${data.str1}</div>`;
 		list += `<div class="slider_txt_lg">${data.str2}</div>`;
 		list += '<div class="slider_txt">전문업체와 상담하세요.</div>';
-		list += `<div><button id="reqEstimateBtn" class="slider_txt bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded"  onclick="location.href='reqQuote'">견적문의요청</button></div></div>`;
+		list += `<div><button id="reqEstimateBtn" class="slider_txt bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded"  onclick="location.href='reqQuote'">견적문의하기</button></div></div>`;
 		list += `<img src="images/p_images/${data.img}" alt=""></li>`;
 	});		
 
@@ -44,8 +45,8 @@ function sliderSection(){
 				${list}
 
 				<div class="slider_btn">
-					<span id="prev_btn">◀</span>
-					<span id="next_btn">▶</span>
+					<span id="prev_btn" style="display:none;">◀</span>
+					<span id="next_btn" style="display:none;">▶</span>
 				</div>
 
 
@@ -98,14 +99,14 @@ function blogSection(){
 	
 	const dataList = [
 		{  	title:"난방 방 하나가 안 따듯해요? 부평동 누수탐지 순환 안되는 방 해결~",  
-			content:`난방 순환이 언제부터안 되는건지 처음부터 안된 건지 알 수는 없지만 지금 살고 있는 집에서 8년을 살았다는데
-처음부터 이곳 방만 차가웠던것같아요 원인을 알고 싶다고
+			content:`지금 살고 있는 집에서 8년을 살았다는데
+처음부터 이곳 방만 차가웠던것 같아요 원인을 알고 싶다고
 저희 누수탐지 전문 업체에 전화 주셨네요
 모든 경험을 통해서 난방 순환이 안되는 곳을 해결해볼게요 ...` , 
 			img:"blog_01.jpg" ,
       url:"https://m.blog.naver.com/h0661h/221756313902"
 		},
-		{  	title:"화장실에서 떨어지는 물 변기 누수 원인 확인했어요 변기 배수구 방수",  
+		{  	title:"화장실에서 떨어지는 물 변기 누수 원인 확인했어요",  
 			content:`아래층 화장실 천장에서 물의 떨어지는데 원인을 알 수 없어서 계량기를 확인해보니
  배관 쪽에서는 누수될 확률이 없네요
 누수가 된다면 화장실인데 화장실에서도 제일 의심되는 부분이 변기네요
@@ -113,16 +114,16 @@ function blogSection(){
 			img:"blog_02.jpg" ,
       url:"https://m.blog.naver.com/h0661h/221637790128"
 		},
-		{  	title:"수도 배관 누수 산곡동 아파트 보일러실에서 물이흘러나와요 인천누수",  
+		{  	title:"수도 배관 누수 산곡동 아파트 보일러실에서 물이흘러나와요",  
 			content:`청천동 아파트 누수 물이 많이 떨어져서 누수탐지 장비를 이용해서 누수탐지를 시작해봅니다
 어느 위치에서 새는 건지 장비를 이용해야 정확한 지점을 확인할 수 있어요 ...` , 
 			img:"blog_03.jpg"  ,
       url:"https://m.blog.naver.com/h0661h/221900989320"
 		},
     {  	title:"화장실누수 화장실 부분 방수 바닥유가 방수로 아래층누수 잡히길~",  
-			content:`화장실 아래층천장 부분에서 누수가 되는데 특별히 물을 많이 사용하는 것도 아닌데
+			content:`화장실 아래층천장 부분에서 누수가 되는데 ÁÁ
  어디서 누수가 되는지 도무지 알 수 없네요
-화장실 전체 공사를 해야하지만 부분적으로 방수를해보고 차도가없을시 최후방법을 선택하고자 저희업체에의뢰를하였다네요 ..` , 
+화장실 전체 공사를 해야하지만 부분적으로 방수를해보고 차도가 없을시 최후방법을 선택하고자 저희 업체에 의뢰를 하였다네요 ..` , 
 			img:"blog_04.jpg"  ,
       url:"https://m.blog.naver.com/h0661h/221600408843"
 		},
@@ -157,10 +158,10 @@ function blogSection(){
 	});		
 
 	return `<section class="blog_section">
-			<h2 class="text-center p-4 font-bold text-2xl">시공사례
-			  <button id = "blog_more_btn" class="absolute right-0 mr-4 bg-gray-300 hover:bg-grey text-grey-dark font-semibold py-2 px-4 border border-grey hover:border-transparent rounded mr-2 float-right text-xs hover:text-white" onclick="window.open('${BLOG_URL}') ">더보기..</button> 
+			<h2 class="text-center px-4 py-10 font-bold text-2xl">시공사례</h2>
+				<button id = "blog_more_btn" class="absolute right-0 mr-4 text-grey-dark font-semibold my-10 py-2 px-4 border border-grey hover:border-transparent rounded mr-2 float-right text-xs " onclick="window.open('${BLOG_URL}') ">더보기..</button> 
 			</h2>
-			  <div class="px-4">
+			  <div class="py-4 px-4">
 				<div class="blog_contain swiper-container block md:flex justify-between md:-mx-2">
 					<div class="swiper-wrapper">
 						${list}
@@ -185,13 +186,16 @@ function iconSection(){
 	dataList.forEach((data, index)=>{
 		
 		if(index > 0){
-			list += '<div class="icon_arrow"><img src="images/s_images/icon_arrow.png" alt=""></div>';
+			//list += '<div class="icon_arrow"><img src="images/s_images/icon_arrow.png" alt=""></div>';
+			list += '<img class="icon_arrow" src="images/s_images/icon_arrow.png" alt="">';
 		}
 					 
 		list += `<div class="icon_img">
 					<img src="images/s_images/${data.img}" alt="">
 					<span>${data.text}</span>
-           		 </div>`;
+		   		 </div>`;
+		
+	
 	});		
 	
 			
@@ -226,11 +230,7 @@ function companySection(){
 	
 	let list = '';
 	dataList.forEach((data, index)=>{
-		
-		if(index > 0){
-			list += '<div class="icon_arrow"><img src="images/s_images/icon_arrow.png" alt=""></div>';
-		}
-					 
+		 
 		list += `<div class="companyBox swiper-slide px-10 py-6">
                     <img src="images/p_images/${data.img}" alt="">
                     <div class="company_contents" >
@@ -240,8 +240,8 @@ function companySection(){
                 </div>`;
 	});		
 			
-	return `<section class="company_section bg-gray-200 ">
-            <span class="text-center pt-12 pb-2 font-bold text-xl">한국건축설비누수를 선택해야하는 이유!</span>
+	return `<section class="company_section py-5 bg-gray-200 ">
+            <span class="text-center pt-12 pb-5 font-bold text-xl">한국건축설비누수를 선택해야하는 이유!</span>
 			<div class= "relative">
 				<div class="company_page swiper-container static">
 					<div class="swiper-wrapper">
@@ -259,17 +259,17 @@ function companySection(){
 				
 			</div>
 
-            <div class="w-full text-center"><button id="reqEstimateBtn"  class="slider_txt bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded " style="margin:20px auto; "onclick="location.href='reqQuote'">견적문의요청</button></div>
+            <div class="w-full text-center"><button id="reqEstimateBtn"  class="slider_txt bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded " style="margin:20px auto; "onclick="location.href='reqQuote'">견적문의하기</button></div>
         </section>`;
 }		
 		
 function socialSection(){
 				
 	return `<section class="social_section">
-    			<div class="social_list w-1/2">
+    			<div class="social_list w-1/2 my-auto">
     			  <a href="${BLOG_URL}" target="_blank"><div class="flex flex-row pr-6 pb-4"><img src="images/s_images/icon_blog.png" style="width:40px; height:40px"><span class="my-auto ml-2 text-white">네이버블로그</span></div></a>
     			  <a href="${YOUTUBE_URL}" target="_blank"><div class="flex flex-row"><img src="images/s_images/icon_youtube.png" style="width:40px; height:40px"><span class="my-auto ml-2  text-white">유튜브</span></div></a>
     			</div>
-    			 <div class="w-1/2 h-12 flex  m-auto justify-center"><a class="inline-flex my-auto " href="tel:010-7504-1822"><img src="images/s_images/icon_call.png" style="width:30px; height:30px"><span class="social_call ml-2 pt-1 text-white font-semibold">010-7504-1822</span></div></a>
+    			 <div class="w-1/2 flex  m-auto justify-center"><a class="border py-4 px-4 md:px-10 rounded-full inline-flex my-auto " href="tel:010-7504-1822"><img src="images/s_images/icon_call.png" style="width:30px; height:30px"><span class="social_call ml-2 pt-1 text-white font-semibold">010-7504-1822</span></div></a>
     		</section>`;			
 }
