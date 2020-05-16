@@ -2,14 +2,14 @@
  
 /* 모바일용 CSS */
 .subTitle{
- 
+  padding-top: 50px;
+  padding-bottom: 20px;
 }
 
 /* 상단 영역 CSS */
 .top_section{
     order:3;
     width:100%;
-    height:300px;
 }
 
     
@@ -18,12 +18,7 @@
     display:flex;
     order:4;
     width:100%;
-    padding-left:5%;
-    padding-right:5%;
-    padding-bottom: 5%;
-    margin-top:20px;
-    /* background: #f2f2f2; */
-
+    flex-direction: column;
 }
 
 
@@ -38,6 +33,7 @@
 
 /* 입력 영역 CSS */
 .form_section{
+  align-items: center;
 }
 
 

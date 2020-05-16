@@ -37,7 +37,7 @@ exports.header = function(){
 exports.footer = function(){
 
 	return `
-	<div class="py-10 mx-10 text-gray-300 text-xs">
+	<div class="py-5 mx-10 text-gray-300 text-xs">
 		 <div class="pb-3 text-sm">한국건축설비누수</div>
 		 <div class="pb-2">대표 : 허재균 | 사업자등록번호 : 122-14-63748</div>
 		<div class="pb-4">주소 : 인천 부평구 부평동 191-10</div>

@@ -48,11 +48,12 @@ border-spacing:0;
 input{
 margin:0;
 padding:0;
-box-sizing:content-box;
+/* box-sizing:content-box; */
+box-sizing:border-box;
 vertical-align:top;
 appearance:none;
-border:1px solid #e65d5d;
-color:#e65d5d;
+/* border:1px solid #e65d5d;
+color:#e65d5d; */
 border-radius:0; 
 font-family:NanumGothic,나눔고딕,'Nanum Gothic','맑은 고딕',HelveticaNeue,DroidSans,Sans-serif,Helvetica;
 }

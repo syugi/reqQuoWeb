@@ -42,7 +42,7 @@
 .logo a{
     font-size: 1.55em;
     font-size: 1.55rem;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .nav{
@@ -354,7 +354,7 @@ span.dot{
 
 .company_contents li{
   padding-bottom:10px;
-  color: #5a67d8;
+  color: #3182ce;
   	font-weight: 600;
 }
 .company_contents div{

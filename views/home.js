@@ -76,10 +76,10 @@ function categorySection(){
 	dataList.forEach((data)=>{
 
 		list += `<li>
-					<a href="#"><figure>
+					<figure>
 						<div><img src="images/s_images/${data.img}" alt=""></div>
 						<figcaption>${data.name}</figcaption>
-					</figure></a>
+					</figure>
 				</li>`;
 	});		
 	list += '</ul>';
@@ -217,7 +217,7 @@ function companySection(){
 		},
 		{ titleList : ["#부부출장","#블로그운영"] , 
 		  content   : `부부가 함께 출장나갑니다.<br>
-                            여자 혼자사셔도 걱정마세요! 사장님이 시공하시고 사모님이 옆에서 친절히 설명드립니다. 사모님이 직접 운영하시는 블로그에서는 다양한 시공사례도 확인 하실수 있습니다. <br>
+                            사장님이 시공하시고 사모님이 옆에서 친절히 설명드립니다. 사모님이 직접 운영하시는 블로그에서는 다양한 시공사례도 확인 하실수 있습니다. <br>
                            <a href="${BLOG_URL}" target="_blank" class="text-blue-500 underline font-semibold pt-2">한국건축설비누수 블로그 보러가기</a>`,
 		  img       : "company_03.jpg"  
 		},
@@ -241,7 +241,7 @@ function companySection(){
 	});		
 			
 	return `<section class="company_section py-5 bg-gray-200 ">
-            <span class="text-center pt-12 pb-5 font-bold text-xl">한국건축설비누수를 선택해야하는 이유!</span>
+            <span class="text-center pt-12 pb-5 font-bold text-2xl">한국건축설비누수를 선택해야하는 이유!</span>
 			<div class= "relative">
 				<div class="company_page swiper-container static">
 					<div class="swiper-wrapper">
@@ -270,6 +270,6 @@ function socialSection(){
     			  <a href="${BLOG_URL}" target="_blank"><div class="flex flex-row pr-6 pb-4"><img src="images/s_images/icon_blog.png" style="width:40px; height:40px"><span class="my-auto ml-2 text-white">네이버블로그</span></div></a>
     			  <a href="${YOUTUBE_URL}" target="_blank"><div class="flex flex-row"><img src="images/s_images/icon_youtube.png" style="width:40px; height:40px"><span class="my-auto ml-2  text-white">유튜브</span></div></a>
     			</div>
-    			 <div class="w-1/2 flex  m-auto justify-center"><a class="border py-4 px-4 md:px-10 rounded-full inline-flex my-auto " href="tel:010-7504-1822"><img src="images/s_images/icon_call.png" style="width:30px; height:30px"><span class="social_call ml-2 pt-1 text-white font-semibold">010-7504-1822</span></div></a>
+    			 <div class="w-1/2 flex  m-auto justify-center"><a class="border py-4 px-4 md:px-10 rounded-full inline-flex my-auto " href="tel:010-7504-1822"><img src="images/s_images/icon_call.png" style="width:30px; height:30px"><span class="social_call ml-2 pt-1 text-white font-semibold">010-7504-1822</span></a></div>
     		</section>`;			
 }
