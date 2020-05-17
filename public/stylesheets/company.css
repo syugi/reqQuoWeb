@@ -17,8 +17,26 @@
 }
 
 .intro_section p{
-
 }
+
+.equip_div div{
+  display:inline-block;
+  padding-bottom: 1.25rem;
+}
+
+.equip_div img{
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+
+.equip_div p{
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
 
 /* 태블릿용 CSS */
 @media all and (min-width:768px){
@@ -33,6 +51,9 @@
 .form_section{
 }
 
+.equip_div div{
+  width:400px;
+}
 
 /* PC용 CSS */
 @media all and (min-width:960px){
