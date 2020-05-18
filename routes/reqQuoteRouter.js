@@ -18,10 +18,11 @@ const storage = multer.diskStorage({
     callback(null, 'public/uploads'); 
   }, 
   filename(req, file, callback) { 
-    let array = file.originalname.split('.'); 
-    array[0] = array[0] + '_'; array[1] = '.' + array[1]; 
-    array.splice(1, 0, Date.now().toString()); 
-    const result = array.join(''); 
+    let array = file.originalname.split('.'); 
+    //array[0] = array[0] + '_'; array[1] = '.' + array[1]; 
+    //array.splice(1, 0, Date.now().toString()); 
+    //const result = array.join(''); 
+    const result =  Date.now().toString() +'.' + array[1];
     console.log(">>>result :  "+result); 
     callback(null, result); 
   } 
