@@ -152,31 +152,4 @@ function getMsgContents(reqId, reqDate, custNm, telNo, upjong, boilerType, addr,
 
 
 
-// function sendMsg(custTelNo, contents){
-//    //메시지 발송 내역 저장
-//         // const insertMsgList = "INSERT INTO SEND_MSG_LIST ( SEQ, REQ_ID, REQ_DATE, TO_TELNO, FROM_TELNO, SUBJECT, CONTENTS, MSG_TYPE, SEND_YN ) VALUES (0, ?, ?, ?, ?, ?, ? ,?, ?)";
-
-//         // const reqId    = 0; //견적요청 저장후받아오기  
-//         // const reqDate  =  dateformat.asString('yyyyMMdd', new Date());
-//         // const contents =  getMsgContents(reqId, reqDate, post.custNm, post.telNo, post.upjong, post.boilerType, post.addr ,post.dtlAddr, post.extAddr, post.descr, post.custType);
-//         // console.log('reqDate : '+reqDate+'\n contents : ' +contents);
-//         // db.query(insertMsgList , [ reqId, reqDate, smsConf.from, post.telNo , smsConf.comp_subject, contents, smsConf.type, "N"], function(error, result){
-//         //   if(error){
-//         //     throw error;
-//         //   }
-
-
-//           //업체에 견적요청 메시지 발송 
-//           const params = {
-//             subject : smsConf.comp_subject, // 제목 (LMS 필수)
-//             text    : contents,             // 문자 내용
-//             to      : smsConf.comp_telNo,   // 수신번호 (받는이 :업체)
-//             from    : custTelNo,             // 발신번호 (보낸이 :고객)
-//             type    : smsConf.type          // 구분(SMS,LMS,알림톡) 
-//           }
-//           const result = smsSend.sendSms(params);
-//         console.log(" 메시지 전송결과 : "+JSON.stringify(result));
-// }
-
-
 module.exports = router;

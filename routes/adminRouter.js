@@ -3,26 +3,17 @@ const router     = express.Router();  
 const template   = require('../views/template/template.js');		 
 const db         = require('../model/db_conn.js');
 const config     = require('../config/config');
+const login      = require('../views/login.js');	  
 
 
-// /* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   const title = config.company_name;
-//   const body  = `${reqQuote.html()}`;
-//   const link  = `<link rel="stylesheet" href="/stylesheets/reqQuote.css">`;
-//   const script = `
-// 		<!--다음 우편번호-->
-//     	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-// 		<script src="/javascripts/reqQuote.js"></script>
-// 		`;
-//   const html = template.HTML(title,link, body,script);
-//   res.send(html);
-// });
-
-router.post('/', function(req, res, next){
-	
-	res.redirect( '/msadmin/list');
+router.get('/', function(req, res, next) {
+  const title = "한국건축설비누수";
+  const body = `${login.html()}`;
+  const link  = ``;
+  const script = ``;
+  const html = template.HTML(title,link, body,script);
+  res.send(html);
 });
 
 
