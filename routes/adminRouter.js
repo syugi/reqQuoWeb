@@ -20,7 +20,13 @@ const config     = require('../config/config');
 //   res.send(html);
 // });
 
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next){
+	
+	res.redirect( '/msadmin/list');
+});
+
+
+router.get('/list', function(req, res, next) {
    
    const sql = "SELECT REQ_ID, CUST_NM, TEL_NO, EMAIL_ID, EMAIL_DOWN, UPJONG, BOILER_TYPE, POST_CODE, ADDR, DTL_ADDR,EXT_ADDR, DESCR, CUST_TYPE, CREATED_DT FROM REQ_QUOTE_LIST ORDER BY REQ_ID DESC";
         

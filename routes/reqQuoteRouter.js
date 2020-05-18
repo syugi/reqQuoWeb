@@ -146,7 +146,7 @@ router.get('/result', function(req, res, next) {
 
 
 function getMsgContents(reqId, reqDate, custNm, telNo, upjong, boilerType, addr, dtlAddr, extAddr, descr, custType){
-    const detailUrl = "https://reqquoweb-hdniu.run.goorm.io/admin/detail?id="+reqId;
+    const detailUrl = "http://hknusu.com/admin/detail?id="+reqId;
     return `[${upjong} 견적요청]\n요청자명 : ${custNm}(${custType})\n전화번호 : ${telNo}\n주소 : ${addr}\n견적상세보기 : ${detailUrl}`
 }
 
