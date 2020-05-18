@@ -53,7 +53,8 @@ router.get('/', function(req, res, next) {
 router.post('/save', upload.array('img_file'), function(req, res, next){
 	//console.log('견적요청 전송되었습니다.');
 	//res.redirect( '/reqQuote');
-   
+
+ 
   //견적요청
 	const post = req.body;
 	console.log("post --> "+JSON.stringify(post));
@@ -135,10 +136,7 @@ router.post('/save', upload.array('img_file'), function(req, res, next){
 
 router.get('/result', function(req, res, next) {
     const title = config.company_name;
-    const body  = `<section style="order:3; width:100%; height:300px; ">
-            <p>견적요청이 완료되었습니다.</p>
-              <button onclick="location.href='/'">확인</button>
-           </section>`;
+   const body  = `${reqQuote.result()}`;
     const link  = `<link rel="stylesheet" href="/stylesheets/reqQuote.css">`;
     const script = ``;
     const html = template.HTML(title,link, body,script);

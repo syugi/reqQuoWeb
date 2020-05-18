@@ -231,7 +231,7 @@ function companySection(){
 	let list = '';
 	dataList.forEach((data, index)=>{
 		 
-		list += `<div class="companyBox swiper-slide px-10 py-6">
+		list += `<div class="companyBox swiper-slide ">
                     <img src="images/p_images/${data.img}" alt="">
                     <div class="company_contents" >
                       ${template.list(data.titleList)}
@@ -241,7 +241,7 @@ function companySection(){
 	});		
 			
 	return `<section class="company_section py-5 bg-gray-200 ">
-            <span class="text-center pt-12 pb-5 font-bold text-2xl">한국건축설비누수를 선택해야하는 이유!</span>
+            <span style="font-family: 'Do Hyeon', Sans-serif;" class="text-center py-12  text-3xl"><span class="text-blue-600">한국건축설비누수</span>를 선택해야하는 이유!</span>
 			<div class= "relative">
 				<div class="company_page swiper-container static">
 					<div class="swiper-wrapper">

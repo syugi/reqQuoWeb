@@ -69,8 +69,10 @@ router.get('/', function(req, res, next) {
               </table>`;
      
       const title = config.company_name;
-      const body  = `<section style="order:3; width:100%; ">
-              <div class="py-4 font-bold text-2xl">견적현황</div>
+      const body  = `
+            <section style="order:3; width:100%; ">
+              <div style="font-family: 'Do Hyeon', Sans-serif;" class="py-10 text-3xl text-center " >견적 현황</div>
+
               <div style="max-height:500px;" class="shadow overflow-auto rounded border-b border-gray-200 ">
               ${list}
               </div>

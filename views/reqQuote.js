@@ -4,12 +4,15 @@ module.exports = {
 		 return topSection() 
 			 +formSection();
 	}
+  ,result:function(){
+		 return  resultSection();
+	}
 }
 	
 function topSection(){
 	return `
 		<section class="top_section">
-			<div class="h-48 py-20 text-3xl text-center bg-cover font-semibold bg-blue-100" >견적 문의</div>
+			<div style="font-family: 'Do Hyeon', Sans-serif;" class="h-48 py-20 text-3xl text-center bg-cover bg-blue-100" >견적 문의</div>
 			<div class="px-5 pt-10"> 아래의 양식을 작성하여 문의하시면 입력하신 휴대폰 번호로 견적 상담 문자/전화를 드립니다.</div>
 			<div class="flex px-5 py-5"> 
 				<img src="images/s_images/icon_call.png" style="width:30px; height:30px">
@@ -122,6 +125,24 @@ function formSection(){
 
 		</section>
     `;
+}
+
+function resultSection(){
+	return `
+<section style="order:3; width:100%;">
+  <div class="flex bg-gray-100 py-24 justify-center">
+      <div class="p-12 text-center max-w-2xl">
+          <div class="md:text-3xl text-3xl font-bold">견적요청이 완료되었습니다.</div>
+          <div class="text-xl font-normal mt-4">견적요청 내용을 확인 후 입력하신 휴대폰 번호로 견적 상담 문자/전화를 드립니다.
+        </div>
+          <div class="mt-6 flex justify-center h-12 relative">
+              <div class="flex shadow-md font-medium absolute py-2 px-4 text-green-100
+          cursor-pointer bg-blue-600 rounded text-lg tr-mt  svelte-jqwywd" onclick="location.href='/'">확인</div>
+          </div>
+      </div>
+  </div>
+</section>
+  `;
 }
 	
 	
