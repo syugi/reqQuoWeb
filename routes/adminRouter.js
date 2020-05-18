@@ -57,7 +57,7 @@ router.get('/', function(req, res, next) {
         list += `<td colspan="3" class="text-left py-3 px-4 hidden md:table-cell" >${data.ADDR}</td>`;
          list += `<td class="text-left py-3 px-4 w-20"> 
          <!-- <a href="#" class="text-grey-lighter font-bold py-1 px-1 rounded text-xs bg-green hover:bg-green-dark">Edit</a>-->
-             <a href="/admin/detail?id=${data.REQ_ID}"  class="font-bold text-xs bg-green">상세보기</a>
+             <a href="/msadmin/detail?id=${data.REQ_ID}"  class="font-bold text-xs bg-green">상세보기</a>
          </td> `;
         // list += '</tr><tr>';
         // list += `<td class="text-left py-3 px-4">${data.UPJONG}</td>`;
