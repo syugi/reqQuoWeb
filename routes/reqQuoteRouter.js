@@ -9,7 +9,7 @@ const smsSend    = require('./smsSend.js');
 const dateformat = require('date-format');
 const multer     = require('multer');	
 const is         = require('is-0')
-const crypto     = require('./crypto.js');
+const crypto     = require('../lib/crypto.js');
 
 const DEV_YN     = 'Y'; //개발여부 
 

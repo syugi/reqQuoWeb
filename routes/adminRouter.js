@@ -4,15 +4,60 @@ const template   = require('../views/template/template.js');
 const db         = require('../model/db_conn.js');
 const config     = require('../config/config');
 const admin      = require('../views/admin.js');	  
-const crypto     = require('./crypto.js');
+const crypto     = require('../lib/crypto.js');
+const is         = require('is-0')
 
 router.get('/', function(req, res, next) {
+ console.log(res.test );
   const title = config.company_name;
   const body = `${admin.login()}`;
   const link  = ``;
   const script = ``;
   const html = template.HTML(title,link, body,script);
   res.send(html);
+});
+
+router.post('/login', function(req, res, next){
+  
+  const inputId = req.body.id;
+  const inputPw = req.body.pw;
+  
+  const selectAdminUser = "SELECT ID, PASSWORD FROM ADMIN_USER_LIST WHERE ID = ? ";
+  db.query(selectAdminUser, [inputId], function(error, result){
+    
+      if(error){
+        console.log("로그인 실패 - DB조회실패!");
+        throw error;
+      }
+     
+      if(is.empty(result)){
+        console.log("로그인 실패 - ID 없음!");
+        //alert("존재하지 않는 ID입니다. 다시 확인해 주세요.");
+        //res.send('<script type="text/javascript">alert("존재하지 않는 ID입니다. 다시 확인해 주세요.");</script>');
+        res.test = "text입니다.";
+        res.redirect( '/msadmin');
+        return;
+      }
+         
+      // const password = result[0].PASSWORD;
+    
+      // //입력한 비밀번호를 암호화해서 매칭 
+      // crypto.pbkdf2(inputPw, 'salt', 100, 64, 'sha512', (err, derivedKey) => {
+      // if (err) throw err;
+
+      // const cryptoPw = derivedKey.toString('hex');
+      // console.log(derivedKey.toString('hex'));  // '3745e48...08d59ae'
+
+      //     if(cryptoPw ===password){
+      //       console.log("로그인 성공!");
+      //       res.redirect( '/list');
+      //     }else{
+      //       console.log("로그인 실패 - 비밀번호 불일치!");
+      //       alert("비밀번호가 일치하지 않습니다. 다시 확인해 주세요.");
+      // return; 
+      // }
+      // }); 
+   });  
 });
 
 

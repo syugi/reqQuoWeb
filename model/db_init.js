@@ -1,6 +1,6 @@
 const mysql    = require('mysql');
 const dbConfig = require('../config/db_config');
-
+const crypto   = require('crypto');
 
 const db =  mysql.createConnection({
   host: dbConfig.host,
@@ -78,22 +78,43 @@ CREATE TABLE SEND_MSG_LIST(
          engine=InnoDB `;
 
 
+//관리자 로그인 테이블 생성 
+const create_adminUserList = `
+CREATE TABLE  ADMIN_USER_LIST(
+              ID                    varchar(200)  NOT NULL
+            , PASSWORD     varchar(512)  NOT NULL
+            , NAME    varchar(50) 
+            , CREATED_DT   DATETIME not null default now()
+            , primary key(ID)
+         )
+         comment = '관리자 로그인'
+         default charset = utf8
+         engine=InnoDB `;
+
+
+
 db.connect(function(err) {
   if (err) throw err;
   console.log("DB Connected!");
 	
+   //insertAdminUser("admin", "admin" , "관리자");
+  
    //dropTable("REQ_QUOTE_LIST");
   //dropTable("ATCH_FILE_LIST");
   //dropTable("SEND_MSG_LIST");
+  // dropTable("ADMIN_USER_LIST");
   
-  //견적요청 테이블  생성
-  createTable("REQ_QUOTE_LIST", create_reqQuoteList);
+  // //견적요청 테이블  생성
+  // createTable("REQ_QUOTE_LIST", create_reqQuoteList);
   
-  //첨부파일 테이블  생성
-  createTable("ATCH_FILE_LIST", create_reqFileList);
+  // //첨부파일 테이블  생성
+  // createTable("ATCH_FILE_LIST", create_reqFileList);
   
-  //문자발송 테이블  생성
-  createTable("SEND_MSG_LIST", create_sendMsgList);
+  // //문자발송 테이블  생성
+  // createTable("SEND_MSG_LIST", create_sendMsgList);
+  
+  // //관리자 로그인 테이블  생성
+  // createTable("ADMIN_USER_LIST", create_adminUserList);
 
 });
 
@@ -162,5 +183,31 @@ function dropTable(tableNm){
 //         return true; 
 //     }
 //   });
-// }
+// }  
   
+/*
+ * 관리자 유저 추가 
+ */
+function insertAdminUser(id, pw , name){
+  
+  //비밀번호 암호화해서 저장  
+  crypto.pbkdf2(pw, 'salt', 100, 64, 'sha512', (err, derivedKey) => {
+      if (err) throw err;
+    
+      const cryptoPw = derivedKey.toString('hex');
+      console.log(derivedKey.toString('hex'));  // '3745e48...08d59ae'
+
+      //insert 
+      const insertAdminUserList = "INSERT INTO ADMIN_USER_LIST ( ID, PASSWORD, NAME) VALUES (?, ?, ?)";
+    
+      db.query(insertAdminUserList, [id,cryptoPw,name], function(error, result){
+      if(error){
+              console.error("관리자 유저 저장 오류");
+      throw error;
+            }
+            console.error(`[Insert OK] 관리자 ${id}(이)가 정상적으로 저장되었습니다.`);
+      });
+    
+  });  
+
+}
