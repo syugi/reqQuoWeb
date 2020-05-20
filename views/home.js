@@ -7,7 +7,7 @@ const YOUTUBE_URL = "https://www.youtube.com/channel/UC5aWLxVXVuPyJZCHWrO4Gow";
 
 module.exports = {
 	
-     html : function(){
+     html : function(){
 		return sliderSection()
 		+ categorySection()
 		+ companySection() 
@@ -108,28 +108,28 @@ function blogSection(){
 		},
 		{  	title:"화장실에서 떨어지는 물 변기 누수 원인 확인했어요",  
 			content:`아래층 화장실 천장에서 물의 떨어지는데 원인을 알 수 없어서 계량기를 확인해보니
- 배관 쪽에서는 누수될 확률이 없네요
+ 배관 쪽에서는 누수될 확률이 없네요
 누수가 된다면 화장실인데 화장실에서도 제일 의심되는 부분이 변기네요
 변기를 탈착해보니 ...` , 
 			img:"blog_02.jpg" ,
       url:"https://m.blog.naver.com/h0661h/221637790128"
 		},
 		{  	title:"수도 배관 누수 산곡동 아파트 보일러실에서 물이흘러나와요",  
-			content:`청천동 아파트 누수 물이 많이 떨어져서 누수탐지 장비를 이용해서 누수탐지를 시작해봅니다
-어느 위치에서 새는 건지 장비를 이용해야 정확한 지점을 확인할 수 있어요 ...` , 
+			content:`청천동 아파트 누수 물이 많이 떨어져서 누수탐지 장비를 이용해서 누수탐지를 시작해봅니다
+어느 위치에서 새는 건지 장비를 이용해야 정확한 지점을 확인할 수 있어요 ...` , 
 			img:"blog_03.jpg"  ,
       url:"https://m.blog.naver.com/h0661h/221900989320"
 		},
     {  	title:"화장실누수 화장실 부분 방수 바닥유가 방수로 아래층누수 잡히길~",  
 			content:`화장실 아래층천장 부분에서 누수가 되는데 ÁÁ
- 어디서 누수가 되는지 도무지 알 수 없네요
-화장실 전체 공사를 해야하지만 부분적으로 방수를해보고 차도가 없을시 최후방법을 선택하고자 저희 업체에 의뢰를 하였다네요 ..` , 
+ 어디서 누수가 되는지 도무지 알 수 없네요
+화장실 전체 공사를 해야하지만 부분적으로 방수를해보고 차도가 없을시 최후방법을 선택하고자 저희 업체에 의뢰를 하였다네요 ..` , 
 			img:"blog_04.jpg"  ,
       url:"https://m.blog.naver.com/h0661h/221600408843"
 		},
     {  	title:"수도배관 누수 외벽으로 흐르는 물 열화상으로 체크했어요 인천누수",  
-			content:`빌라 외벽으로 누수가 되는데 수도계량기가 돌아가지않아서 내 집에서 누수가 아닌거같아  일주일 정도 방치했다네요
- 이곳은 바로 누수탐지장비를 이용해서 누수 검사 시작해보렵니다 ...` , 
+			content:`빌라 외벽으로 누수가 되는데 수도계량기가 돌아가지않아서 내 집에서 누수가 아닌거같아  일주일 정도 방치했다네요
+ 이곳은 바로 누수탐지장비를 이용해서 누수 검사 시작해보렵니다 ...` , 
 			img:"blog_05.jpg"  ,
       url:"https://m.blog.naver.com/h0661h/221886456419"
 		}
@@ -212,7 +212,7 @@ function companySection(){
 		  img       : "company_01.jpg"  
 		},
 		{ titleList : ["#20년경력 전문가","#꼼꼼한 사장님","#직접시공"] , 
-		  content   : "20여년 경력을 가지신 사장님이 상담 부터 시공 및 하자보수까지 모두 직접 해드립니다. 모든일에 책임감도 강하신 분이라 남들보다 꼼꼼히 처리합니다",
+		  content   : "20여년 경력을 가지신 사장님이 상담 부터 시공 및 하자보수까지 모두 직접 해드립니다. 모든일에 책임감도 강하신 분이라 남들보다 꼼꼼히 처리합니다",
 		  img       : "company_02.jpg"  
 		},
 		{ titleList : ["#부부출장","#블로그운영"] , 
@@ -241,7 +241,7 @@ function companySection(){
 	});		
 			
 	return `<section class="company_section py-5 bg-gray-200 ">
-            <span style="font-family: 'Do Hyeon', Sans-serif;" class="text-center py-12  text-3xl"><span class="text-blue-600">한국건축설비누수</span>를 선택해야하는 이유!</span>
+            <span style="font-family: 'Do Hyeon', Sans-serif;" class="text-center py-12  text-3xl"><span class="text-blue-600">한국건축설비누수</span>를 선택해야하는 이유!</span>
 			<div class= "relative">
 				<div class="company_page swiper-container static">
 					<div class="swiper-wrapper">
