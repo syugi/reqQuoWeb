@@ -97,24 +97,24 @@ db.connect(function(err) {
   if (err) throw err;
   console.log("DB Connected!");
 	
-   //insertAdminUser("admin", "admin" , "관리자");
-  
-   //dropTable("REQ_QUOTE_LIST");
+   insertAdminUser("admin", "admin" , "관리자");
+  
+   //dropTable("REQ_QUOTE_LIST");
   //dropTable("ATCH_FILE_LIST");
-  //dropTable("SEND_MSG_LIST");
-  // dropTable("ADMIN_USER_LIST");
+  //dropTable("SEND_MSG_LIST");
+   //dropTable("ADMIN_USER_LIST");
   
-  // //견적요청 테이블  생성
-  // createTable("REQ_QUOTE_LIST", create_reqQuoteList);
+  // //견적요청 테이블  생성
+  // createTable("REQ_QUOTE_LIST", create_reqQuoteList);
   
-  // //첨부파일 테이블  생성
-  // createTable("ATCH_FILE_LIST", create_reqFileList);
+  // //첨부파일 테이블  생성
+  // createTable("ATCH_FILE_LIST", create_reqFileList);
   
-  // //문자발송 테이블  생성
-  // createTable("SEND_MSG_LIST", create_sendMsgList);
+  // //문자발송 테이블  생성
+  // createTable("SEND_MSG_LIST", create_sendMsgList);
   
-  // //관리자 로그인 테이블  생성
-  // createTable("ADMIN_USER_LIST", create_adminUserList);
+  // //관리자 로그인 테이블  생성
+  // createTable("ADMIN_USER_LIST", create_adminUserList);
 
 });
 
@@ -128,15 +128,15 @@ function createTable(tableNm , sql){
   db.query(existSql, function (err, result) {
     if (err) throw err;
 
-    if(result.length > 0){
-        console.log(`[Create] ${tableNm} 테이블이 이미 생성되어있습니다.`);
+    if(result.length > 0){
+        console.log(`[Create] ${tableNm} 테이블이 이미 생성되어있습니다.`);
 
     }else{
-       console.log(`[Create Start] ${tableNm} 테이블을 생성을 시작 합니다.`);
+       console.log(`[Create Start] ${tableNm} 테이블을 생성을 시작 합니다.`);
 
        db.query(sql, function (err, result) {
           if (err) throw err;
-          console.log(`[Create E n d] ${tableNm} 테이블이 생성이 완료 되었습니다.`);
+          console.log(`[Create E n d] ${tableNm} 테이블이 생성이 완료 되었습니다.`);
        });
     }
   });
@@ -149,21 +149,21 @@ function createTable(tableNm , sql){
  */
 function dropTable(tableNm){
   
-  const existSql = `SHOW TABLES LIKE '${tableNm}'`;
+  const existSql = `SHOW TABLES LIKE '${tableNm}'`;
   db.query(existSql, function (err, result) {
     if (err) throw err;
 
-    if(result.length > 0){
+    if(result.length > 0){
       
         const dropSql = `DROP TABLE ${tableNm}`;
         db.query(dropSql, function (err, result) {
           if (err) throw err;
-          console.log(`[Delete] ${tableNm} 테이블이 삭제되었습니다.`);
+          console.log(`[Delete] ${tableNm} 테이블이 삭제되었습니다.`);
         });
-    }else{
-      console.log(`[Delete] ${tableNm} 테이블이 없습니다.`);
+    }else{
+      console.log(`[Delete] ${tableNm} 테이블이 없습니다.`);
     }
-  });
+  });
 }
   
 
@@ -175,39 +175,41 @@ function dropTable(tableNm){
 //   db.query(existSql, function (err, result) {
 //     if (err) throw err;
 
-//     if(result.length > 0){
-//         console.log(`[Already Exists] ${tableNm} 테이블이 생성되어있습니다.`);
+//     if(result.length > 0){
+//         console.log(`[Already Exists] ${tableNm} 테이블이 생성되어있습니다.`);
 //         return false; 
 //     }else{
-//         console.log(`[NOT Exist] ${tableNm} 테이블이 없습니다.`);
+//         console.log(`[NOT Exist] ${tableNm} 테이블이 없습니다.`);
 //         return true; 
 //     }
 //   });
 // }  
-  
+  
 /*
  * 관리자 유저 추가 
  */
 function insertAdminUser(id, pw , name){
   
-  //비밀번호 암호화해서 저장  
-  crypto.pbkdf2(pw, 'salt', 100, 64, 'sha512', (err, derivedKey) => {
+  //비밀번호 암호화해서 저장  
+  // crypto.randomBytes(64, (err, buf) =>{
+  //   const salt = buf.toString('base64');
+
+    crypto.pbkdf2(pw, 'salt', 1000, 64, 'sha512', (err, key) => {
       if (err) throw err;
     
-      const cryptoPw = derivedKey.toString('hex');
-      console.log(derivedKey.toString('hex'));  // '3745e48...08d59ae'
+      const cryptoPw = key.toString('base64');
 
       //insert 
-      const insertAdminUserList = "INSERT INTO ADMIN_USER_LIST ( ID, PASSWORD, NAME) VALUES (?, ?, ?)";
+      const insertAdminUserList = "INSERT INTO ADMIN_USER_LIST ( ID, PASSWORD, NAME) VALUES (?, ?, ?)";
     
       db.query(insertAdminUserList, [id,cryptoPw,name], function(error, result){
-      if(error){
-              console.error("관리자 유저 저장 오류");
-      throw error;
-            }
-            console.error(`[Insert OK] 관리자 ${id}(이)가 정상적으로 저장되었습니다.`);
+        if(error){
+            console.error("관리자 유저 저장 오류");
+            throw error;
+        }
+        console.error(`[Insert OK] 관리자 ${id}(이)가 정상적으로 저장되었습니다.`);
       });
     
-  });  
-
+    });  
+  //});
 }

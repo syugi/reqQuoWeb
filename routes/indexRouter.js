@@ -10,18 +10,18 @@ const fs = require('fs');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-   // fs.readFile('./public/data.json', function(error, dataList){
-   // req.list = dataList;
-   // });
+   // fs.readFile('./public/data.json', function(error, dataList){
+   // req.list = dataList;
+   // });
 	
-  const title = config.company_name;
-  const body  = `${home.html()}`;
-  const link  = `
+  const title = config.company_name;
+  const body  = `${home.html()}`;
+  const link  = `
 		<!--Swiper-->
 		<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
 		<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 		`;
-  const script = `
+  const script = `
  		<script src="/javascripts/index.js"></script>
 
 		<!-- Swiper JS -->
@@ -75,7 +75,7 @@ router.get('/', function(req, res, next) {
 
 		</script>	
 		`;
-  const html = template.HTML(title,link, body,script);
+  const html = template.HTML(title,link, body,script);
   res.send(html);
   // res.render('index', { title: 'Express' });
 });

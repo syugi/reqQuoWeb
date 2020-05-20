@@ -1,5 +1,5 @@
 const BLOG_URL = "http://blog.naver.com/h0661h";
-const TITLE    = "한국건축설비누수";
+const TITLE    = "한국건축설비누수";
 
 exports.header = function(){
 	

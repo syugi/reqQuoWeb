@@ -1,8 +1,8 @@
-const crypto     = require('../lib/crypto.js');
+const crypto     = require('../lib/crypto.js');
 
 module.exports = {
 	
-    login : function(){
+    login : function(){
 		  return loginSection();
     }
     ,list : function(result){
@@ -15,20 +15,20 @@ module.exports = {
 
 function loginSection(){
   return `
-      <section class="login_section py-20 w-full bg-gray-200" style="order:3;">
-            <h2 style="font-family: 'Do Hyeon', Sans-serif;" class="text-3xl font-midium text-center py-4">관리자 로그인</h2>
+      <section class="login_section py-20 w-full bg-gray-200" style="order:3;">
+            <h2 style="font-family: 'Do Hyeon', Sans-serif;" class="text-3xl font-midium text-center py-4">관리자 로그인</h2>
             <div class="w-full flex justify-center">
                 <form class="max-w-2xl" method="POST" action="/msadmin/login" >
                   <div class="mb-4">
                     <label class="block text-md font-light mb-2" for="username">Username</label>
-                    <input class="w-full bg-drabya-gray border-gray-500 appearance-none border p-4 font-light leading-tight focus:outline-none focus:shadow-outline" type="text" name="username" id="" placeholder="Username">
+                    <input class="w-full bg-drabya-gray border-gray-500 appearance-none border p-4 font-light leading-tight focus:outline-none focus:shadow-outline" type="text" name="id" id="" placeholder="Username">
                   </div>
                   <div class="mb-4">
                     <label class="block text-md font-light mb-2" for="password">Password</label>
-                    <input class="w-full bg-drabya-gray border-gray-500 appearance-none border p-4 font-light leading-tight focus:outline-none focus:shadow-outline" type="password" name="password" id="" placeholder="Password">
+                    <input class="w-full bg-drabya-gray border-gray-500 appearance-none border p-4 font-light leading-tight focus:outline-none focus:shadow-outline" type="password" name="pw" id="" placeholder="Password">
                   </div>
 
-                  <div class="w-full mb-5">
+                  <div class="w-full mb-5">
                     <input type="submit"  class="w-full bg-blue-500 hover:bg-blue-700 text-white font-light py-4 px-6 rounded focus:outline-none focus:shadow-outline" value="LOGIN" name="submit">
                     <!-- <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-light py-4 px-6 rounded focus:outline-none focus:shadow-outline" type="button">
                       LOGIN
@@ -46,17 +46,17 @@ function listSection(result){
   
   let list = `<table class="min-w-full bg-white">
      <thead style="width:100%;" class="bg-gray-800 text-white">
-        <tr >
+        <tr >
           <th class="text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
-          <th class="text-left py-3 px-4 uppercase font-semibold text-sm">요청자</th>
-          <th class="text-left py-3 px-4 uppercase font-semibold text-sm">휴대폰번호</th>
+          <th class="text-left py-3 px-4 uppercase font-semibold text-sm">요청자</th>
+          <th class="text-left py-3 px-4 uppercase font-semibold text-sm">휴대폰번호</th>
           <th class="text-left py-3 px-4 uppercase font-semibold text-sm hidden md:table-cell">요청업종</td>
-          <th colspan="3" class="text-left py-3 px-4 uppercase font-semibold text-sm hidden md:table-cell">주소</th>
+          <th colspan="3" class="text-left py-3 px-4 uppercase font-semibold text-sm hidden md:table-cell">주소</th>
           <th class="text-left py-3 px-4 uppercase font-semibold text-sm"></th>
         </tr>
        <!-- <tr>
-          <th class="text-left py-3 px-4 uppercase font-semibold text-sm">요청업종</td>
-          <th colspan="3" class="text-left py-3 px-4 uppercase font-semibold text-sm">주소</th>
+          <th class="text-left py-3 px-4 uppercase font-semibold text-sm">요청업종</td>
+          <th colspan="3" class="text-left py-3 px-4 uppercase font-semibold text-sm">주소</th>
         </tr> -->
       </thead>
       <tbody class="text-gray-700">`;
@@ -70,8 +70,8 @@ function listSection(result){
          list += `<td class="text-left py-3 px-4 hidden md:table-cell">${data.UPJONG}</td>`;
         list += `<td colspan="3" class="text-left py-3 px-4 hidden md:table-cell" >${data.ADDR}</td>`;
          list += `<td class="text-left py-3 px-4 w-20"> 
-         <!-- <a href="#" class="text-grey-lighter font-bold py-1 px-1 rounded text-xs bg-green hover:bg-green-dark">Edit</a>-->
-             <a href="/msadmin/detail?id=${crypto.cipher('reqid',data.REQ_ID)}"  class="font-bold text-xs bg-green">상세보기</a>
+         <!-- <a href="#" class="text-grey-lighter font-bold py-1 px-1 rounded text-xs bg-green hover:bg-green-dark">Edit</a>-->
+             <a href="/msadmin/detail?id=${crypto.cipher('reqid',data.REQ_ID)}"  class="font-bold text-xs bg-green">상세보기</a>
          </td> `;
         // list += '</tr><tr>';
         // list += `<td class="text-left py-3 px-4">${data.UPJONG}</td>`;
@@ -83,11 +83,11 @@ function listSection(result){
               </table>`;
   
   
-    return `<section style="order:3; width:100%; ">
-              <div style="font-family: 'Do Hyeon', Sans-serif;" class="py-10 text-3xl text-center " >견적 현황</div>
+    return `<section style="order:3; width:100%;  height:500px;">
+              <div style="font-family: 'Do Hyeon', Sans-serif;" class="py-10 text-3xl text-center " >견적 현황</div>
 
-              <div style="max-height:500px;" class="shadow overflow-auto rounded border-b border-gray-200 ">
-              ${list}
+              <div style="max-height:500px;" class="shadow overflow-auto rounded border-b border-gray-200 ">
+              ${list}
               </div>
              </section>`;
 }
