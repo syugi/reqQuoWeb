@@ -1,3 +1,5 @@
+const crypto     = require('../routes/crypto.js');
+
 module.exports = {
 	
     login : function(){
@@ -59,6 +61,7 @@ function listSection(result){
       <tbody class="text-gray-700">`;
      
       result.forEach((data)=>{
+        
         list += '<tr style="border-bottom:1px solid #dedede;">';
         list += `<td class="text-left py-3 px-4">${data.REQ_ID}</td>`;
          list += `<td class="text-left py-3 px-4">${data.CUST_NM}</td>`;
@@ -67,7 +70,7 @@ function listSection(result){
         list += `<td colspan="3" class="text-left py-3 px-4 hidden md:table-cell" >${data.ADDR}</td>`;
          list += `<td class="text-left py-3 px-4 w-20"> 
          <!-- <a href="#" class="text-grey-lighter font-bold py-1 px-1 rounded text-xs bg-green hover:bg-green-dark">Edit</a>-->
-             <a href="/msadmin/detail?id=${data.REQ_ID}"  class="font-bold text-xs bg-green">상세보기</a>
+             <a href="/msadmin/detail?id=${crypto.cipher('reqid',data.REQ_ID)}"  class="font-bold text-xs bg-green">상세보기</a>
          </td> `;
         // list += '</tr><tr>';
         // list += `<td class="text-left py-3 px-4">${data.UPJONG}</td>`;

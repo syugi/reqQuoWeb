@@ -9,8 +9,11 @@ const smsSend    = require('./smsSend.js');
 const dateformat = require('date-format');
 const multer     = require('multer');	
 const is         = require('is-0')
+const crypto     = require('./crypto.js');
 
 const DEV_YN     = 'Y'; //개발여부 
+
+const BASE_URL   = 'http://hknusu.com';
 
 /* File Upload */
 const storage = multer.diskStorage({ 
@@ -137,7 +140,7 @@ router.post('/save', upload.array('img_file'), function(req, res, next){
 
 router.get('/result', function(req, res, next) {
     const title = config.company_name;
-   const body  = `${reqQuote.result()}`;
+    const body  = `${reqQuote.result()}`;
     const link  = `<link rel="stylesheet" href="/stylesheets/reqQuote.css">`;
     const script = ``;
     const html = template.HTML(title,link, body,script);
@@ -146,7 +149,9 @@ router.get('/result', function(req, res, next) {
 
 
 function getMsgContents(reqId, reqDate, custNm, telNo, upjong, boilerType, addr, dtlAddr, extAddr, descr, custType){
-    const detailUrl = "http://hknusu.com/admin/detail?id="+reqId;
+  
+    const detailUrl = BASE_URL + "/admin/detail?id="+crypto.cipher('reqid',reqId);
+  
     return `[${upjong} 견적요청]\n요청자명 : ${custNm}(${custType})\n전화번호 : ${telNo}\n주소 : ${addr}\n견적상세보기 : ${detailUrl}`
 }
 

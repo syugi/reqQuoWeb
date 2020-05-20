@@ -4,11 +4,10 @@ const template   = require('../views/template/template.js');
 const db         = require('../model/db_conn.js');
 const config     = require('../config/config');
 const admin      = require('../views/admin.js');	  
-
-
+const crypto     = require('./crypto.js');
 
 router.get('/', function(req, res, next) {
-  const title = "한국건축설비누수";
+  const title = config.company_name;
   const body = `${admin.login()}`;
   const link  = ``;
   const script = ``;
@@ -40,9 +39,11 @@ router.get('/list', function(req, res, next) {
 
 router.get('/detail', function(req, res, next) {
    
+   const reqId = crypto.decipher('reqid',req.query.id);
+  
    const selectReqQuote = "SELECT REQ_ID, CUST_NM, TEL_NO, EMAIL_ID, EMAIL_DOWN, UPJONG, BOILER_TYPE, POST_CODE, ADDR, DTL_ADDR,EXT_ADDR, DESCR, CUST_TYPE, CREATED_DT FROM REQ_QUOTE_LIST WHERE REQ_ID = ?";
         
-   db.query(selectReqQuote, [req.query.id], function(error, result){
+   db.query(selectReqQuote, [reqId], function(error, result){
       if(error){
         throw error;
       }
