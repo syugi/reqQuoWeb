@@ -11,9 +11,8 @@ const multer     = require('multer');
 const is         = require('is-0')
 const cryptoLib  = require('../lib/crypto.js');
 
-const DEV_YN     = 'Y'; //개발여부 
-
 const BASE_URL   = 'http://hknusu.com';
+const DEV_YN     = 'N';
 
 /* File Upload */
 const storage = multer.diskStorage({ 
