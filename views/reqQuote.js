@@ -2,7 +2,8 @@ module.exports = {
 	
 	html:function(){
 		 return topSection() 
-			 +formSection();
+			 +formSection()
+       +privacyModal();
 	}
   ,result:function(){
 		 return  resultSection();
@@ -113,7 +114,7 @@ function formSection(){
 					<div class="mt-2">
 						<label class="inline-flex items-center">
 						  <input type="checkbox" name="privacyAgree" class="form-checkbox">
-						  <span class="ml-2">개인정보수집 및 이용, 제 3자제공동의에 동의</span>
+						  <span class="ml-2" id="btnModalOpen">개인정보수집 및 이용에 동의</span>
 						</label>
 					</div>
 				</div>
@@ -137,12 +138,52 @@ function resultSection(){
         </div>
           <div class="mt-6 flex justify-center h-12 relative">
               <div class="flex shadow-md font-medium absolute py-2 px-4 text-green-100
-          cursor-pointer bg-blue-600 rounded text-lg tr-mt  svelte-jqwywd" onclick="location.href='/'">확인</div>
+          cursor-pointer bg-blue-600 rounded text-lg tr-mt  svelte-jqwywd" id="btnModalClose">확인</div>
           </div>
       </div>
   </div>
 </section>
   `;
 }
+
+function privacyModal(){
+  return `
+  <div class="modal hidden" id="privacyModal">
+    <div class="md:w-2/3 sm:w-full rounded-lg shadow-lg bg-white my-3 modal-content">
+        <div class="flex border-b border-gray-100 px-5 pt-3">
+              <span class="font-bold text-lg py-2">개인정보 수집 및 이용에 대한 안내</span>
+        </div>
+
+        <div class="px-5 py-2 text-gray-600">
+            
+            <p class="py-5 leading-normal">한국건축설비누수(이하 ‘회사’)는 견적을 신청하시는 분께 정보통신망 이용촉진 및 정보보호 등에 관한 법률 등 관련 법령에 따라 개인정보의 수집·이용 목적, 수집하려는 개인정보의 항목, 개인정보의 보유 및 이용 기간에 대하여 안내드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
+            </p>
+
+            <h2 class="font-bold text-gray-700 text-lg py-5">1. 개인정보의 수집·이용 목적</h2>
+            <p class="py-2 leading-normal">이용자 견적 의사 확인, 이용자 본인 식별·인증, 상담 및 방문견적 등 각종 서비스 제공을 위한 정보 제공,  약관 개정 등의 고지사항 전달, 분쟁조정을 위한 기록 보존, 민원처리 등 이용자 보호 및 서비스 운영, 서비스 이용기록과 접속 빈도 분석, 서비스 이용에 대한 통계, 서비스 분석 및 통계에 따른 맞춤 서비스 제공 및 광고 게재, 보안, 프라이버시, 안전 측면에서 이용자가 안심하고 이용할 수 있는 서비스 이용환경 구축 등
+            </p>
+
+
+            <h2 class="font-bold text-gray-700 text-lg py-5">2. 수집하려는 개인정보의 항목</h2>
+            <p class="py-2 leading-normal"><견적문의><br>
+            - 필수항목 : 휴대전화번호, 이름<br>
+            - 선택항목 : 이메일, 자택주소
+            </p>
+
+            <h2 class="font-bold text-gray-700 text-lg py-5">3. 개인정보의 보유 및 이용 기간</h2>
+            <p class="py-2 leading-normal">원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 관계법령의 규정에 의하여 보전할 필요가 있는 경우 일정 기간 동안 개인정보를 보관할 수 있습니다.
+            </p>
+        </div>
+
+        <div class="px-5 py-4 flex justify-end">
+          <button id="btnModalClose" class="text-sm py-2 px-3 text-gray-500 hover:text-gray-600 transition duration-150">확인</button>
+        </div>
+    </div>
+  </div>
+`;
+}
+
+
+
 	
 	
