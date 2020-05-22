@@ -111,9 +111,11 @@ function chageUpjongSelect(){
 }
 
 function init(){
-    const btnModalClose = document.getElementById('btnModalClose');
+  
+    /* 개인정보 수집 정책 */  
+    const btnModalClose = document.getElementById('btnModalClose');
     const btnModalOpen  = document.getElementById('btnModalOpen');
-    const modal         = document.querySelector('.modal');
+    const modal         = document.getElementById('checkPrivacyModal');
   
     const openModal = () => {
       modal.classList.remove("hidden");

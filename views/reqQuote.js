@@ -3,7 +3,7 @@ module.exports = {
 	html:function(){
 		 return topSection() 
 			 +formSection()
-       +privacyModal();
+       +checkPrivacyModal();
 	}
   ,result:function(){
 		 return  resultSection();
@@ -114,7 +114,7 @@ function formSection(){
 					<div class="mt-2">
 						<label class="inline-flex items-center">
 						  <input type="checkbox" name="privacyAgree" class="form-checkbox">
-						  <span class="ml-2" id="btnModalOpen">개인정보수집 및 이용에 동의</span>
+						  <span class="ml-2 cursor-pointer" id="btnModalOpen">개인정보수집 및 이용에 동의</span>
 						</label>
 					</div>
 				</div>
@@ -146,9 +146,9 @@ function resultSection(){
   `;
 }
 
-function privacyModal(){
+function checkPrivacyModal(){
   return `
-  <div class="modal hidden" id="privacyModal">
+  <div class="modal hidden" id="checkPrivacyModal"> 
     <div class="md:w-2/3 sm:w-full rounded-lg shadow-lg bg-white my-3 modal-content">
         <div class="flex border-b border-gray-100 px-5 pt-3">
               <span class="font-bold text-lg py-2">개인정보 수집 및 이용에 대한 안내</span>

@@ -79,7 +79,7 @@ function init(){
         nextBtn.style.display = "none";
 
     });
-    
+ 
 }
 
 

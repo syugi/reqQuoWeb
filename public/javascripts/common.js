@@ -19,6 +19,22 @@ function init(){
          gnb.style.display = "block";
        }
     }); 
+  
+  /* 개인정보 수집 정책 */ 
+    const btnPrivacyClose = document.getElementById('btnPrivacyClose');
+    const btnPrivacyOpen  = document.getElementById('btnPrivacyOpen');
+    const modal         = document.getElementById('privacyModal');
+  
+    const openPrivacy = () => {
+      modal.classList.remove("hidden");
+    }
+    
+    const closePrivacy = () => {
+      modal.classList.add("hidden");
+    }
+  
+    btnPrivacyOpen.addEventListener("click",openPrivacy);
+    btnPrivacyClose.addEventListener("click",closePrivacy);
      
 }
 
