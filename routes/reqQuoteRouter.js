@@ -12,7 +12,7 @@ const is         = require('is-0')
 const cryptoLib  = require('../lib/crypto.js');
 
 const BASE_URL   = 'http://hknusu.com';
-const DEV_YN     = 'Y';
+const DEV_YN     = 'N';
 
 /* File Upload */
 const storage = multer.diskStorage({ 
@@ -149,7 +149,7 @@ router.get('/result', function(req, res, next) {
 
 function getMsgContents(reqId, reqDate, custNm, telNo, upjong, boilerType, addr, dtlAddr, extAddr, descr, custType){
   
-    const detailUrl = BASE_URL + "/admin/detail?id="+cryptoLib.cipher('reqid',reqId);
+    const detailUrl = BASE_URL + "/msadmin/detail?id="+cryptoLib.cipher('reqid',reqId);
   
     return `[${upjong} 견적요청]\n요청자명 : ${custNm}(${custType})\n전화번호 : ${telNo}\n주소 : ${addr}\n견적상세보기 : ${detailUrl}`
 }

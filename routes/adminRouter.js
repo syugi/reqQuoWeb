@@ -74,6 +74,16 @@ router.post('/login', function(req, res, next){
 router.get('/list', function(req, res, next) {
    
    const sql = "SELECT REQ_ID, CUST_NM, TEL_NO, EMAIL_ID, EMAIL_DOWN, UPJONG, BOILER_TYPE, POST_CODE, ADDR, DTL_ADDR,EXT_ADDR, DESCR, CUST_TYPE, CREATED_DT FROM REQ_QUOTE_LIST ORDER BY REQ_ID DESC";
+  
+  const sql = `
+    SELECT 
+        REQ_ID, CUST_NM, TEL_NO, EMAIL_ID, EMAIL_DOWN, UPJONG, BOILER_TYPE, POST_CODE, ADDR, DTL_ADDR,EXT_ADDR, DESCR, CUST_TYPE, CREATED_DT
+       , ( SELECT MAX(SEND_YN) 
+             FROM SEND_MSG_LIST Z
+            WHERE Z.REQ_ID = A.REQ_ID ) AS 
+    FROM REQ_QUOTE_LIST
+    ORDER BY REQ_ID DESC`;
+  
         
    db.query(sql, [], function(error, result){
       if(error){
@@ -129,7 +139,7 @@ router.get('/detail', function(req, res, next) {
   
 router.post('/confirm', function(req, res, next){
 	//console.log('견적요청 확인처리되었습니다.');
-	res.redirect( '/admin');
+	res.redirect( '/msadmin/list');
 });
 
 module.exports = router;

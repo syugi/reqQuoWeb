@@ -103,8 +103,8 @@ function detailSection(data,fileResult){
        
        
      return `
-            <section style="order:3; width:100%; overflow:auto background: #f2f2f2;">
-              <form method="POST" enctype="multipart/form-data" action="/admin/confirm">  
+            <section style="order:3; width:100%;  min-height:500px; overflow:auto background: #f2f2f2;">
+              <form method="POST" enctype="multipart/form-data" action="/msadmin/confirm">  
                 <table>
                   <tr class="hidden">
                     <td class="text-right py-3 px-4">REQ ID</td>
@@ -141,7 +141,7 @@ function detailSection(data,fileResult){
                 ${fileList}
 
                 <p class="py-4">
-                   <input type="submit" value="확인" name="submit">
+                   <input type="submit" value="확인" name="submit" class="shadow-md font-medium ml-4 py-2 px-4 text-green-100 cursor-pointer bg-blue-600 rounded text-lg tr-mt svelte-jqwywd">
                 </p>
               </form>
              </section>

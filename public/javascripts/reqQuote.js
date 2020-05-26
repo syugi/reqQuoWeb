@@ -89,11 +89,10 @@ function validate(){
      return false;
   }
   
-  
-  // if(privacyAgree.checked!=true){
-  // alert("개인정보수집 및 이용 미동의");
-  //    return false;
-  // }
+  if(privacyAgree.checked!=true){
+      alert("개인정보수집 및 이용에 동의가 필요합니다.");
+      return false;
+   }
   
 }
 
@@ -123,6 +122,9 @@ function init(){
     
     const closeModal = () => {
       modal.classList.add("hidden");
+      
+      var privacyAgree  = document.getElementById('privacyAgree' );
+      privacyAgree.checked = true;
     }
   
     btnModalOpen.addEventListener("click",openModal);

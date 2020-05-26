@@ -113,7 +113,7 @@ function formSection(){
 				<div class="block pt-10">
 					<div class="mt-2">
 						<label class="inline-flex items-center">
-						  <input type="checkbox" name="privacyAgree" class="form-checkbox">
+						  <input type="checkbox" name="privacyAgree" id="privacyAgree" class="form-checkbox">
 						  <span class="ml-2 cursor-pointer" id="btnModalOpen">개인정보수집 및 이용에 동의</span>
 						</label>
 					</div>
@@ -138,7 +138,7 @@ function resultSection(){
         </div>
           <div class="mt-6 flex justify-center h-12 relative">
               <div class="flex shadow-md font-medium absolute py-2 px-4 text-green-100
-          cursor-pointer bg-blue-600 rounded text-lg tr-mt  svelte-jqwywd" id="btnModalClose">확인</div>
+          cursor-pointer bg-blue-600 rounded text-lg tr-mt svelte-jqwywd" onclick="location.href='/'">확인</div>
           </div>
       </div>
   </div>
