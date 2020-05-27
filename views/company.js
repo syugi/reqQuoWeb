@@ -42,6 +42,8 @@ function techSection(){
 				<div class="text-center">
 					<img class="inline-block px-4" src="images/p_images/tech_01.jpg" >
 					<img class="inline-block px-4" src="images/p_images/tech_02.jpg" >
+					<img class="inline-block px-4" src="images/p_images/tech_03.jpg" > <!-- 가스시공업2종 면허소유 --> 
+					<img class="inline-block px-4" src="images/p_images/tech_04.jpg" >
 				</div>
 			</section>`;
 }
@@ -51,11 +53,27 @@ function equipSection(){
 				<img class="pt-8 inline-block" src="images/s_images/equip.png">
 				<h2 class="text-2xl font-midium text-center py-6">보유장비</h2>
 				<div class="equip_div text-center pt-4">
-					<div><p>누수탐지기</p><img src="images/p_images/equip_nusu.jpg"></div>
-					<div><p>가스탐지기</p><img src="images/p_images/equip_gas.jpg"></div>
-					<div><p>콤프레샤</p><img src="images/p_images/equip_comp.jpg"></div>
-					<div><p>해빙기</p><img src="images/p_images/equip_ice.jpg"></div>
-					<div><p>카드단말기</p><img src="images/p_images/equip_card.jpg"></div>
+				    <div><p>청음탐지기</p><span>누수음을 듣는 장비</span><img src="images/p_images/equip_청음탐지기.jpeg"></div>
+					<div><p>가스탐지기</p><span>가스통 과 가스냄새를 맏아  숫다로 나타나고 하나는 삐~소리를 내서 누수어디지점에서 누수가되는지 확인하는 장비  (예)화장실에서 누수가되는지 보일러실에서 누수되는지 주방에서 누수되는지 세탁실에서 세는지 확인해주는 용도</span>
+						 <img src="images/p_images/equip_가스탐지기_01.jpeg">
+						 <img src="images/p_images/equip_가스탐지기_02.jpeg">
+						 <img src="images/p_images/equip_가스탐지기_03.jpeg">
+						 <img src="images/p_images/equip_가스탐지기_04.jpeg">
+				    </div>
+					<div><p>압력계</p><span>배관과 콤프레샤 또는 가스탐지 장비에 연결해서 누수가되는지 확인하는 압력계</span><img src="images/p_images/equip_청음탐지기.jpeg"></div>
+					<div><p>내시경</p><span>눈으로 확인이 잘되지 않고 손이 들어가지 않는 곳을 확인하는 장비</span><img src="images/p_images/equip_내시경.jpeg"></div>
+					<div><p>관로탐지기</p><span>집안에 (동관.철)배관이 어디로 연결되고 어디로 이어지는지 확인하는 장비</span><img src="images/p_images/equip_관로탐지기.jpeg"></div>
+					<div><p>비금속관로탐지기</p><span>배관속에 삽입해서 어디로 지나가는지 확인하는 장비</span><img src="images/p_images/equip_비금속관로탐지기.jpeg"></div>
+					<div><p>스팀해빙기</p><span>배관이 동파되면 배관에 넣고 얼음을 녹이는 장비</span>
+						<img src="images/p_images/equip_스팀해빙기_01.jpeg">
+						<img src="images/p_images/equip_스팀해빙기_02.jpeg">
+					</div>
+					<div><p>석션기</p><span>청소기와 같은 기능</span>
+						<img src="images/p_images/equip_석션기_01.jpeg">
+						<img src="images/p_images/equip_석션기_02.jpeg">
+					</div>
+					<div><p>콤프레샤</p><span>누수탐지 할때 기본필수 공기압으로 확인하는장비</span><img src="images/p_images/equip_콤프레샤.jpeg"></div>
+					<div><p>열화상카메라</p><span>뜨거운곳이나 차가운곳을 확인하는장비</span><img src="images/p_images/equip_열화상카메라.jpeg"></div>
 				</div>
 			</section>`;
 }
