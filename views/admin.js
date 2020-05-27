@@ -71,7 +71,7 @@ function listSection(result){
         list += `<td class="text-left py-3 px-4 hidden md:table-cell">${data.UPJONG}</td>`;
         list += `<td colspan="3" class="text-left py-3 px-4 hidden md:table-cell" >${data.ADDR}</td>`;
         list += `<td class="text-center py-3 px-4 w-16 md:w-24 ">${data.SEND_YN}</td>`;
-        list += `<td class="text-left py-3 px-4 w-16 md:w-24"><a href="/admin/detail?id=${cryptoLib.cipher('reqid',data.REQ_ID)}" class="cursor-pointer bg-gray-700 hover:bg-gray-600 shadow-xl px-2 py-2 font-bold text-xs inline-block text-blue-100 hover:text-white rounded">상세보기</a></td>`;
+        list += `<td class="text-left py-3 px-4 w-20 md:w-24"><a href="/admin/detail?id=${cryptoLib.cipher('reqid',data.REQ_ID)}" class="cursor-pointer bg-gray-700 hover:bg-gray-600 shadow-xl px-2 py-2 font-bold text-xs inline-block text-blue-100 hover:text-white rounded">상세보기</a></td>`;
         
         
         
