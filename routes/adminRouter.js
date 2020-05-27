@@ -154,7 +154,7 @@ router.get('/msgReSend', function(req, res, next){
           subject : smsConf.comp_subject, // 제목 (LMS 필수)
           text    : contents,             // 문자 내용
           to      : config.company_telNo, // 수신번호 (받는이 :업체)
-          from    : data.TEL_NO,           // 발신번호 (보낸이 :고객)
+          from    : config.company_telNo, // 발신번호
           type    : smsConf.type          // LMS , 구분(SMS,LMS,알림톡) 
      }
       //(DEV_YN !== 'Y'){//개발 모드일때는 메세지 전송하지않도록 
