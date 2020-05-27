@@ -1,7 +1,10 @@
 const db         = require('../model/db_conn.js');
 const dateformat = require('date-format');
 const smsConf    = require('../config/sms_config');
+const cryptoLib  = require('../lib/crypto.js');
 const { config, Group } = require('coolsms-node-sdk')
+
+const BASE_URL   = 'http://hknusu.com';
 
 config.init({ 
   apiKey : smsConf.apiKey, 
@@ -62,4 +65,10 @@ async function send (params = {},reqId,reqDate) {
      
 };
   
+exports.getMsgContents = (reqId, reqDate, custNm, telNo, upjong, boilerType, addr, dtlAddr, extAddr, descr, custType) => {
+
+    const detailUrl = BASE_URL + "/admin/detail?id="+cryptoLib.cipher('reqid',reqId);
+  
+    return `[${upjong} 견적요청]\n요청자명 : ${custNm}(${custType})\n전화번호 : ${telNo}\n주소 : ${addr}\n견적상세보기 : ${detailUrl}`
+};
                     

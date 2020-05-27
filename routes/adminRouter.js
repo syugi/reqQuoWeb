@@ -7,6 +7,9 @@ const admin      = require('../views/admin.js');
 const cryptoLib  = require('../lib/crypto.js');
 const crypto     = require('crypto');
 const is         = require('is-0');
+const smsSend    = require('./smsSend.js');
+const smsConf    = require('../config/sms_config');
+const dateformat = require('date-format');
 
 router.get('/', function(req, res, next) {
   const title = config.company_name;
@@ -53,7 +56,7 @@ router.post('/login', function(req, res, next){
           console.log("cryptoPw : "+cryptoPw);
           if(cryptoPw === password){
             console.log("로그인 성공!");
-            res.redirect( '/msadmin/list');
+            res.redirect( '/admin/list');
             return;
           }else{
             console.log("로그인 실패 - 비밀번호 불일치!");
@@ -73,16 +76,9 @@ router.post('/login', function(req, res, next){
 
 router.get('/list', function(req, res, next) {
    
-   const sql = "SELECT REQ_ID, CUST_NM, TEL_NO, EMAIL_ID, EMAIL_DOWN, UPJONG, BOILER_TYPE, POST_CODE, ADDR, DTL_ADDR,EXT_ADDR, DESCR, CUST_TYPE, CREATED_DT FROM REQ_QUOTE_LIST ORDER BY REQ_ID DESC";
+  // const sql = "SELECT REQ_ID, CUST_NM, TEL_NO, EMAIL_ID, EMAIL_DOWN, UPJONG, BOILER_TYPE, POST_CODE, ADDR, DTL_ADDR,EXT_ADDR, DESCR, CUST_TYPE, CREATED_DT FROM REQ_QUOTE_LIST ORDER BY REQ_ID DESC";
   
-  const sql = `
-    SELECT 
-        REQ_ID, CUST_NM, TEL_NO, EMAIL_ID, EMAIL_DOWN, UPJONG, BOILER_TYPE, POST_CODE, ADDR, DTL_ADDR,EXT_ADDR, DESCR, CUST_TYPE, CREATED_DT
-       , ( SELECT MAX(SEND_YN) 
-             FROM SEND_MSG_LIST Z
-            WHERE Z.REQ_ID = A.REQ_ID ) AS 
-    FROM REQ_QUOTE_LIST
-    ORDER BY REQ_ID DESC`;
+  const sql = "SELECT REQ_ID, CUST_NM, TEL_NO, EMAIL_ID, EMAIL_DOWN, UPJONG, BOILER_TYPE, POST_CODE, ADDR, DTL_ADDR,EXT_ADDR, DESCR, CUST_TYPE, CREATED_DT, IFNULL(( SELECT MAX(SEND_YN) FROM SEND_MSG_LIST Z WHERE Z.REQ_ID = A.REQ_ID ),'N') AS SEND_YN FROM REQ_QUOTE_LIST A ORDER BY REQ_ID DESC";
   
         
    db.query(sql, [], function(error, result){
@@ -106,7 +102,7 @@ router.get('/detail', function(req, res, next) {
    
    const reqId = cryptoLib.decipher('reqid',req.query.id);
   
-   const selectReqQuote = "SELECT REQ_ID, CUST_NM, TEL_NO, EMAIL_ID, EMAIL_DOWN, UPJONG, BOILER_TYPE, POST_CODE, ADDR, DTL_ADDR,EXT_ADDR, DESCR, CUST_TYPE, CREATED_DT FROM REQ_QUOTE_LIST WHERE REQ_ID = ?";
+   const selectReqQuote = "SELECT REQ_ID, CUST_NM, TEL_NO, EMAIL_ID, EMAIL_DOWN, UPJONG, BOILER_TYPE, POST_CODE, ADDR, DTL_ADDR,EXT_ADDR, DESCR, CUST_TYPE, CREATED_DT, IFNULL(( SELECT MAX(SEND_YN) FROM SEND_MSG_LIST Z WHERE Z.REQ_ID = A.REQ_ID ),'N') AS SEND_YN FROM REQ_QUOTE_LIST A WHERE REQ_ID = ?";
         
    db.query(selectReqQuote, [reqId], function(error, result){
       if(error){
@@ -136,10 +132,45 @@ router.get('/detail', function(req, res, next) {
    });  
 });
 
+router.get('/msgReSend', function(req, res, next){
+	
+  const reqId = cryptoLib.decipher('reqid',req.query.id);
   
+   const selectReqQuote = "SELECT REQ_ID, CUST_NM, TEL_NO, EMAIL_ID, EMAIL_DOWN, UPJONG, BOILER_TYPE, POST_CODE, ADDR, DTL_ADDR,EXT_ADDR, DESCR, CUST_TYPE, CREATED_DT FROM REQ_QUOTE_LIST A WHERE REQ_ID = ?";
+        
+   db.query(selectReqQuote, [reqId], function(error, result){
+      if(error){
+        throw error;
+      }
+  
+      const data = result[0];
+      const reqDate  =  dateformat.asString('yyyyMMdd', new Date()); //요청일자
+     
+      //메세지  전송
+      const contents =  smsSend.getMsgContents(data.REQ_ID, reqDate, data.CUST_NM, data.TEL_NO, data.UPJONG, data.BOILER_TYPE, data.ADDR ,data.DTL_ADDR, data.EXT_ADDR, data.DESCR, data.CUST_TYPE);
+      console.log('reqDate : '+reqDate+'\n contents : ' +contents);
+
+      const params = {
+          subject : smsConf.comp_subject, // 제목 (LMS 필수)
+          text    : contents,             // 문자 내용
+          to      : config.company_telNo, // 수신번호 (받는이 :업체)
+          from    : data.TEL_NO,           // 발신번호 (보낸이 :고객)
+          type    : smsConf.type          // LMS , 구분(SMS,LMS,알림톡) 
+     }
+      //(DEV_YN !== 'Y'){//개발 모드일때는 메세지 전송하지않도록 
+        smsSend.sendSms(params,reqId,reqDate);
+      //}
+      
+	    res.redirect( `/admin/detail?id=${cryptoLib.cipher('reqid',data.REQ_ID)}`);
+  });
+});
+
+
 router.post('/confirm', function(req, res, next){
 	//console.log('견적요청 확인처리되었습니다.');
-	res.redirect( '/msadmin/list');
+	res.redirect( '/admin/list');
 });
+
+
 
 module.exports = router;

@@ -1,4 +1,4 @@
-const crypto     = require('../lib/crypto.js');
+const cryptoLib     = require('../lib/crypto.js');
 
 module.exports = {
 	
@@ -18,7 +18,7 @@ function loginSection(){
       <section class="login_section py-20 w-full bg-gray-200" style="order:3;">
             <h2 style="font-family: 'Do Hyeon', Sans-serif;" class="text-3xl font-midium text-center py-4">관리자 로그인</h2>
             <div class="w-full flex justify-center">
-                <form class="max-w-2xl" method="POST" action="/msadmin/login" >
+                <form class="max-w-2xl" method="POST" action="/admin/login" >
                   <div class="mb-4">
                     <label class="block text-md font-light mb-2" for="username">Username</label>
                     <input class="w-full bg-drabya-gray border-gray-500 appearance-none border p-4 font-light leading-tight focus:outline-none focus:shadow-outline" type="text" name="id" id="" placeholder="Username">
@@ -52,6 +52,7 @@ function listSection(result){
           <th class="text-left py-3 px-4 uppercase font-semibold text-sm">휴대폰번호</th>
           <th class="text-left py-3 px-4 uppercase font-semibold text-sm hidden md:table-cell">요청업종</td>
           <th colspan="3" class="text-left py-3 px-4 uppercase font-semibold text-sm hidden md:table-cell">주소</th>
+          <th class="text-center py-3 px-4 uppercase font-semibold text-sm">전송여부</th>
           <th class="text-left py-3 px-4 uppercase font-semibold text-sm"></th>
         </tr>
        <!-- <tr>
@@ -65,14 +66,15 @@ function listSection(result){
         
         list += '<tr style="border-bottom:1px solid #dedede;">';
         list += `<td class="text-left py-3 px-4">${data.REQ_ID}</td>`;
-         list += `<td class="text-left py-3 px-4">${data.CUST_NM}</td>`;
-         list += `<td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:${data.TEL_NO}">${data.TEL_NO}</a></td>`;
-         list += `<td class="text-left py-3 px-4 hidden md:table-cell">${data.UPJONG}</td>`;
+        list += `<td class="text-left py-3 px-4">${data.CUST_NM}</td>`;
+        list += `<td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:${data.TEL_NO}">${data.TEL_NO}</a></td>`;
+        list += `<td class="text-left py-3 px-4 hidden md:table-cell">${data.UPJONG}</td>`;
         list += `<td colspan="3" class="text-left py-3 px-4 hidden md:table-cell" >${data.ADDR}</td>`;
-         list += `<td class="text-left py-3 px-4 w-20"> 
-         <!-- <a href="#" class="text-grey-lighter font-bold py-1 px-1 rounded text-xs bg-green hover:bg-green-dark">Edit</a>-->
-             <a href="/msadmin/detail?id=${crypto.cipher('reqid',data.REQ_ID)}"  class="font-bold text-xs bg-green">상세보기</a>
-         </td> `;
+        list += `<td class="text-center py-3 px-4 w-24 ">${data.SEND_YN}</td>`;
+        list += `<td class="text-left py-3 px-4 w-24"><a href="/admin/detail?id=${cryptoLib.cipher('reqid',data.REQ_ID)}" class="cursor-pointer bg-gray-700 hover:bg-gray-600 shadow-xl px-2 py-2 font-bold text-xs inline-block text-blue-100 hover:text-white rounded">상세보기</a></td>`;
+        
+        
+        
         // list += '</tr><tr>';
         // list += `<td class="text-left py-3 px-4">${data.UPJONG}</td>`;
         // list += `<td colspan="3" class="text-left py-3 px-4" >${data.ADDR}</td>`;
@@ -104,11 +106,11 @@ function detailSection(data,fileResult){
        
      return `
             <section style="order:3; width:100%;  min-height:500px; overflow:auto background: #f2f2f2;">
-              <form method="POST" enctype="multipart/form-data" action="/msadmin/confirm">  
+              <form method="POST" enctype="multipart/form-data" action="/admin/confirm">  
                 <table>
-                  <tr class="hidden">
-                    <td class="text-right py-3 px-4">REQ ID</td>
-                    <td>${data.REQ_ID}</td>
+                  <tr>
+                    <td class="w-24 text-right py-3 font-bold">ID</td>
+                    <td class="px-4">${data.REQ_ID}</td>
                   </tr>
                   <tr>
                     <td class="w-24 text-right py-3 font-bold">이름</td>
@@ -117,6 +119,12 @@ function detailSection(data,fileResult){
                    <tr>
                     <td class="text-right py-3 font-bold">휴대폰 번호</td>
                     <td class="px-4">${data.TEL_NO}</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right py-3 font-bold">문자전송여부</td>
+                    <td class="px-4"><span class="px-3 ">${data.SEND_YN}</span> 
+                       <a href="/admin/msgReSend?id=${cryptoLib.cipher('reqid',data.REQ_ID)}" class="bg-transparent hover:bg-gray-600 text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2 text-xs">재발송</a>
+                    </td>
                   </tr>
                   <tr>
                     <td class="text-right py-3 font-bold">요청 업종</td>
@@ -143,6 +151,8 @@ function detailSection(data,fileResult){
                 <p class="py-4">
                    <input type="submit" value="확인" name="submit" class="shadow-md font-medium ml-4 py-2 px-4 text-green-100 cursor-pointer bg-blue-600 rounded text-lg tr-mt svelte-jqwywd">
                 </p>
+  
+
               </form>
              </section>
       `;

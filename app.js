@@ -22,7 +22,7 @@ app.use(compression()); //데이터 양을 줄이기 위한 압축 미들웨어
 app.use('/'         , indexRouter   );
 app.use('/company'  , companyRouter );
 app.use('/reqQuote' , reqQuoteRouter);
-app.use('/msadmin'    , adminRouter   );
+app.use('/admin'    , adminRouter   );
 
  
 app.use('/fileTest' , fileTest      ); //파일 테스트

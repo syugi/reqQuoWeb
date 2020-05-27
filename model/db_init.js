@@ -97,7 +97,8 @@ db.connect(function(err) {
   if (err) throw err;
   console.log("DB Connected!");
 	
-   insertAdminUser("admin", "admin" , "관리자");
+   insertAdminUser("h0661", "h0661" , "관리자");
+   insertAdminUser("msheo", "msheo" , "개발자");
   
    //dropTable("REQ_QUOTE_LIST");
   //dropTable("ATCH_FILE_LIST");

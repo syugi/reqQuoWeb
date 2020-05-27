@@ -11,7 +11,6 @@ const multer     = require('multer');
 const is         = require('is-0')
 const cryptoLib  = require('../lib/crypto.js');
 
-const BASE_URL   = 'http://hknusu.com';
 const DEV_YN     = 'N';
 
 /* File Upload */
@@ -88,7 +87,7 @@ router.post('/save', upload.array('img_file'), function(req, res, next){
         }
 
         //메세지  전송
-        const contents =  getMsgContents(reqId, reqDate, post.custNm, post.telNo, post.upjong, post.boilerType, post.addr ,post.dtlAddr, post.extAddr, post.descr, post.custType);
+        const contents =  smsSend.getMsgContents(reqId, reqDate, post.custNm, post.telNo, post.upjong, post.boilerType, post.addr ,post.dtlAddr, post.extAddr, post.descr, post.custType);
         console.log('reqDate : '+reqDate+'\n contents : ' +contents);
         
         const params = {
@@ -149,7 +148,7 @@ router.get('/result', function(req, res, next) {
 
 function getMsgContents(reqId, reqDate, custNm, telNo, upjong, boilerType, addr, dtlAddr, extAddr, descr, custType){
   
-    const detailUrl = BASE_URL + "/msadmin/detail?id="+cryptoLib.cipher('reqid',reqId);
+    const detailUrl = BASE_URL + "/admin/detail?id="+cryptoLib.cipher('reqid',reqId);
   
     return `[${upjong} 견적요청]\n요청자명 : ${custNm}(${custType})\n전화번호 : ${telNo}\n주소 : ${addr}\n견적상세보기 : ${detailUrl}`
 }
