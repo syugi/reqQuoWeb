@@ -42,8 +42,8 @@ function techSection(){
 				<div class="text-center">
 					<img class="inline-block px-4 py-2" src="images/p_images/tech_01.jpg" >
 					<img class="inline-block px-4 py-2" src="images/p_images/tech_02.jpg" >
-					<img class="inline-block px-4 py-2 max-w-xl" src="images/p_images/tech_03.jpg" > <!-- 가스시공업2종 면허소유 --> 
-					<img class="inline-block px-4 py-2 max-w-xl" src="images/p_images/tech_04.jpg" >
+					<img class="inline-block px-4 py-2 md:max-w-xl" src="images/p_images/tech_03.jpg" > <!-- 가스시공업2종 면허소유 --> 
+					<img class="inline-block px-4 py-2 md:max-w-xl" src="images/p_images/tech_04.jpg" >
 				</div>
 			</section>`;
 }
