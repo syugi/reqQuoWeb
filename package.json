@@ -6,8 +6,10 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./bin/www",
-    "build": "postcss public/stylesheets/tailwind.css -o public/build/tailwind.css"
+    "start": "node ./bin/www",
+    "build": "postcss public/stylesheets/tailwind.css -o public/build/tailwind.css",
+		"pm2start": "sudo pm2 start ./bin/www",
+		"pm2stop": "sudo pm2 stop ./bin/www"
   },
   "dependencies": {
     "autoprefixer": "^9.7.6",
