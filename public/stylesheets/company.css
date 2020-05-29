@@ -19,7 +19,7 @@
 .intro_section p{
 }
 
-.equip_div div{
+.equip_div > div{
   display:inline-block;
   padding-bottom: 1.25rem;
 }
@@ -34,9 +34,13 @@
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
   font-size: 1.125rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
+.equip_div span{
+	font-weight: 300;
+	line-height: 1.5;
+}
 
 /* 태블릿용 CSS */
 @media all and (min-width:768px){

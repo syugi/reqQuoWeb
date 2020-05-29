@@ -63,7 +63,7 @@ router.get('/', function(req, res, next) {
 			var swiper = new Swiper('.company_page', {
 				loop: true,
 				pagination: {
-				el: '.companyPagin',
+				<!--el: '.companyPagin',-->
 				type: 'fraction',
 				},
 				navigation: {

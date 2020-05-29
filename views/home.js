@@ -251,7 +251,7 @@ function companySection(){
 				</div>
 					
 				<!-- Add Pagination -->
-				<div class="companyPagin swiper-pagination"></div>
+				<!--<div class="companyPagin swiper-pagination"></div>-->
 				
 				<!-- Add Arrows -->
 				<span class="companyPrevBtn swiper-button-prev"></span>
