@@ -56,8 +56,8 @@ function equipSection(){
 				<img class="pt-8 inline-block" src="images/s_images/equip.png">
 				<h2 class="text-2xl font-midium text-center py-6">보유장비</h2>
 				<div class="equip_div text-center pt-4">
-					<div><img src="images/p_images/equip_청음탐지기.jpg"><div class="px-10"><p>청음탐지기</p><span>누수음을 듣는 장비</span></div></div>	
-					<div><img src="images/p_images/equip_가스탐지장비.jpeg"><div class="px-10"><p>가스탐지기</p><span>가스냄새를 맡아 어디지점에서 누수가 되는지 확인하는 장비</span></div></div>
+					<div><img src="images/p_images/equip_청음탐지기.jpg"><div class="px-10"><p>청음탐지기</p><span>누수음을 듣는 장비</span></div></div>
+          <div><img src="images/p_images/equip_가스탐지장비.jpeg"><div class="px-10"><p>가스탐지기</p><span>가스냄새를 맡아 어디지점에서 누수가 되는지 확인하는 장비</span></div></div>	
 					<div><img src="images/p_images/equip_압력계.jpg"><div class="px-10"><p>압력계</p><span>배관과 콤프레샤 또는 가스탐지 장비에 연결해서 누수가되는지 확인하는 압력계</span></div></div>
 					<div><img src="images/p_images/equip_내시경.jpg"><div class="px-10"><p>내시경</p><span>눈으로 확인이 잘되지 않고 손이 들어가지 않는 곳을 확인하는 장비</span></div></div>
 					<div><img src="images/p_images/equip_관로탐지기.jpg"><div class="px-10"><p>금속관로탐지기</p><span>집안에 (동관.철)배관이 어디로 연결되고 어디로 이어지는지 확인하는 장비</span></div></div>
