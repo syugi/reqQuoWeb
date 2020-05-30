@@ -35,8 +35,8 @@ exports.HTML = function(title, link, body , script){
 		</div>
 	  </body>
 	  </html>
-				
-	  <script src="/javascripts/common.js"></script>
+
+	  <script src="/javascripts/common.js"></script>
    
 		${script}
 	  `;
