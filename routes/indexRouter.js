@@ -14,8 +14,8 @@ router.get('/', function(req, res, next) {
    // req.list = dataList;
    // });
 	
-  const title = config.company_name;
-  const body  = `${home.html()}`;
+  const title = "인천 누수탐지 전문공사업체 - "+config.company_name;
+  const body  = `${home.html()}`;
   const link  = `
 		<!--Swiper-->
 		<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
