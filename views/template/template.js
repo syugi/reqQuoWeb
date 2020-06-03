@@ -22,6 +22,16 @@ exports.HTML = function(title, link, body , script){
     <meta property="og:url" content="http://www.hknusu.com">
     <meta name="description" content="20년 경력 전문가, 전문건설업 등록업체, 최첨단 전문 장비 보유, 시공후 2년 무료 A/S, 인천 부천 전지역 가능">
       
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168375104-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-168375104-1');
+    </script>
+
       
 		${link}
 
