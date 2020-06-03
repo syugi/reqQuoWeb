@@ -29,6 +29,7 @@ CREATE TABLE REQ_QUOTE_LIST(
             , EXT_ADDR    varchar(300) 
             , DESCR       varchar(1000) 
             , CUST_TYPE   varchar(20)
+, REC_STAT varchar(6)
             , CREATED_DT DATETIME not null default now()
             , primary key(REQ_ID)
          )
@@ -44,7 +45,7 @@ CREATE TABLE ATCH_FILE_LIST(
             , REQ_ID                INT NOT NULL
             , ORG_FILE_NM    varchar(200)  
             , STR_FILE_NM     varchar(200) 
-            , FILE_PATH          varchar(50)
+            , FILE_PATH          varchar(500)
             , FILE_SIZE           int(15) 
             , FILE_TYPE          varchar(50)
             , FILE_DESCR       varchar(500) 
@@ -97,12 +98,12 @@ db.connect(function(err) {
   if (err) throw err;
   console.log("DB Connected!");
 	
-   insertAdminUser("h0661", "h0661" , "관리자");
-   insertAdminUser("msheo", "msheo" , "개발자");
+ // insertAdminUser("h0661", "h0661" , "관리자");
+ //  insertAdminUser("msheo", "msheo" , "개발자");
   
-   //dropTable("REQ_QUOTE_LIST");
-  //dropTable("ATCH_FILE_LIST");
-  //dropTable("SEND_MSG_LIST");
+   dropTable("REQ_QUOTE_LIST");
+  dropTable("ATCH_FILE_LIST");
+  dropTable("SEND_MSG_LIST");
    //dropTable("ADMIN_USER_LIST");
   
   // //견적요청 테이블  생성
