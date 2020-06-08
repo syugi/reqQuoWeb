@@ -13,8 +13,12 @@ exports.HTML = function(title, link, body , script){
 
     <link rel="stylesheet" href="/build/tailwind.css">
 
-		<title>${title}</title>
 
+		<title>${title}</title>
+    
+    <!-- 대표URL --> 
+    <link rel="canonical" href="http://www.hknusu.com/">
+  
     <meta property="og:type" content="website"> 
     <meta property="og:title" content=${title}>
     <meta property="og:description" content="20년 경력 전문가, 전문건설업 등록업체, 최첨단 전문 장비 보유, 시공후 2년 무료 A/S, 인천 부천 전지역 가능">
