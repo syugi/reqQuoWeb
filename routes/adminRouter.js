@@ -100,7 +100,8 @@ router.get('/list', function(req, res, next) {
 
 router.get('/detail', function(req, res, next) {
    
-   const reqId = cryptoLib.decipher('reqid',req.query.id);
+   const reqId = req.query.id;
+   //const reqId = cryptoLib.decipher('reqid',req.query.id);
   
    const selectReqQuote = "SELECT REQ_ID, CUST_NM, TEL_NO, EMAIL_ID, EMAIL_DOWN, UPJONG, BOILER_TYPE, POST_CODE, ADDR, DTL_ADDR,EXT_ADDR, DESCR, CUST_TYPE, CREATED_DT, IFNULL(( SELECT MAX(SEND_YN) FROM SEND_MSG_LIST Z WHERE Z.REQ_ID = A.REQ_ID ),'N') AS SEND_YN FROM REQ_QUOTE_LIST A WHERE REQ_ID = ?";
         
