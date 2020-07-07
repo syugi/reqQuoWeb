@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
    // req.list = dataList;
    // });
 	
-  const title = "인천 누수탐지 전문공사업체 - "+config.company_name;
+  const title = config.company_name+" : 누수탐지전문공사";
   const body  = `${home.html()}`;
   const link  = `
 		<!--Swiper-->

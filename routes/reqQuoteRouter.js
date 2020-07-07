@@ -38,7 +38,7 @@ const upload = multer({
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  const title = "견적 - "+config.company_name;
+  const title = config.company_name+" : 견적문의";
   const body  = `${reqQuote.html()}`;
   const link  = `<link rel="stylesheet" href="/stylesheets/reqQuote.css">`;
   const script = `
@@ -137,7 +137,7 @@ router.post('/save', upload.array('img_file'), function(req, res, next){
 
 
 router.get('/result', function(req, res, next) {
-    const title = "견적문의완료 - "+config.company_name;
+    const title = config.company_name+" : 견적문의완료";
     const body  = `${reqQuote.result()}`;
     const link  = `<link rel="stylesheet" href="/stylesheets/reqQuote.css">`;
     const script = ``;

@@ -12,7 +12,7 @@ const smsConf    = require('../config/sms_config');
 const dateformat = require('date-format');
 
 router.get('/', function(req, res, next) {
-  const title = "관리자페이지 - "+config.company_name;
+  const title = config.company_name+" : 관리자페이지";
   const body = `${admin.login()}`;
   const link  = ``;
   const script = ``;
@@ -88,7 +88,7 @@ router.get('/list', function(req, res, next) {
      
       console.log(result);
 
-      const title = "견적요청리스트- "+config.company_name;
+      const title = config.company_name+" : 견적요청리스트";
       const body = `${admin.list(result)}`;
       const link  = `<link rel="stylesheet" href="/stylesheets/reqQuote.css">`;
       const script = ``;
@@ -123,7 +123,7 @@ router.get('/detail', function(req, res, next) {
           throw error;
         }
 
-          const title = "견적상세확인 - "+config.company_name;
+          const title = config.company_name+" : 견적상세확인";
           const body = `${admin.detail(data,fileResult)}`;
           const link  = `<link rel="stylesheet" href="/stylesheets/reqQuote.css">`;
           const script = ``;
@@ -158,7 +158,7 @@ router.get('/test/detail', function(req, res, next) {
          throw error;
        }
 
-         const title = "견적상세확인 - "+config.company_name;
+         const title = config.company_name+" : 견적상세확인";
          const body = `${admin.detail(data,fileResult)}`;
          const link  = `<link rel="stylesheet" href="/stylesheets/reqQuote.css">`;
          const script = ``;
