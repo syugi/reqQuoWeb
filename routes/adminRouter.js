@@ -132,6 +132,41 @@ router.get('/detail', function(req, res, next) {
    });  
 });
 
+router.get('/test/detail', function(req, res, next) {
+   
+  const reqId = req.query.id;
+  //const reqId = cryptoLib.decipher('reqid',req.query.id);
+ 
+  const selectReqQuote = "SELECT REQ_ID, CUST_NM, TEL_NO, EMAIL_ID, EMAIL_DOWN, UPJONG, BOILER_TYPE, POST_CODE, ADDR, DTL_ADDR,EXT_ADDR, DESCR, CUST_TYPE, CREATED_DT, IFNULL(( SELECT MAX(SEND_YN) FROM SEND_MSG_LIST Z WHERE Z.REQ_ID = A.REQ_ID ),'N') AS SEND_YN FROM REQ_QUOTE_LIST A WHERE REQ_ID = ?";
+       
+  db.query(selectReqQuote, [reqId], function(error, result){
+     if(error){
+       throw error;
+     }
+    
+     console.log(result);
+    
+     const data = result[0];
+     const reqId = data.REQ_ID;
+    
+    //첨부파일 조회 
+    const selectFileList = "SELECT FILE_SEQ, REQ_ID, ORG_FILE_NM, STR_FILE_NM, FILE_PATH, FILE_SIZE, FILE_TYPE , FILE_DESCR , USE_YN, CREATED_DT FROM ATCH_FILE_LIST WHERE REQ_ID = ? AND USE_YN = 'Y'";
+
+    db.query(selectFileList, [reqId], function(error, fileResult){
+       if(error){
+         throw error;
+       }
+
+         const title = "견적상세확인 - "+config.company_name;
+         const body = `${admin.detail(data,fileResult)}`;
+         const link  = `<link rel="stylesheet" href="/stylesheets/reqQuote.css">`;
+         const script = ``;
+         const html = template.HTML(title,link, body,script);
+         res.send(html); 
+    });
+  });  
+});
+
 router.get('/msgReSend', function(req, res, next){
 	
   const reqId = cryptoLib.decipher('reqid',req.query.id);

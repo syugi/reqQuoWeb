@@ -18,15 +18,16 @@ router.get('/', function(req, res, next) {
   const body  = `${home.html()}`;
   const link  = `
 		<!--Swiper-->
-		<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
-		<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+		<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+		<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+		
 		`;
   const script = `
  		<script src="/javascripts/index.js"></script>
 
 		<!-- Swiper JS -->
-		<script src="https://unpkg.com/swiper/js/swiper.js"></script>
-		<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+		<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 		<script>
 			
 			<!-- 블로그 슬라이드--> 
