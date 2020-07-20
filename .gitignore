@@ -1,4 +1,10 @@
+# Dependency directories
+node_modules/
+
+# dotenv environment variables file
+.env
 /config/db_config.json
 /config/sms_config.json
-/public/uploads/
-/node_modules/
+
+# file upload
+*/uploads/
