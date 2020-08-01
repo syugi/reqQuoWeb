@@ -1,2 +1,23 @@
-{"company_name":"한국건축설비누수"
-,"company_telNo": "01091798723"}
+{
+  "development": {
+    "username": "root",
+    "password": "altnr23",
+    "database": "HKNS",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
