@@ -3,8 +3,6 @@ const router     = express.Router();
 const template   = require('../views/template/template.js');		
 const reqQuote   = require('../views/reqQuote.js');	 
 const db         = require('../model/db_conn.js');
-const config     = require('../config/config');
-const smsConf    = require('../config/sms_config');
 const smsSend    = require('./smsSend.js');
 const dateformat = require('date-format');
 const multer     = require('multer');	
@@ -38,7 +36,7 @@ const upload = multer({
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  const title = config.company_name+" : 견적문의";
+  const title = process.env.COMPANY_NAME+" : 견적문의";
   const body  = `${reqQuote.html()}`;
   const link  = `<link rel="stylesheet" href="/stylesheets/reqQuote.css">`;
   const script = `
@@ -91,11 +89,11 @@ router.post('/save', upload.array('img_file'), function(req, res, next){
         console.log('reqDate : '+reqDate+'\n contents : ' +contents);
         
         const params = {
-            subject : smsConf.comp_subject, // 제목 (LMS 필수)
-            text    : contents,             // 문자 내용
-            to      : config.company_telNo, // 수신번호 (받는이 :업체)
-            from    : config.company_telNo, // 발신번호
-            type    : smsConf.type          // LMS , 구분(SMS,LMS,알림톡) 
+            subject : "["+process.env.COMPANY_NAME+"] 견적요청입니다.", // 제목 (LMS 필수)
+            text    : contents,              // 문자 내용
+            to      : process.env.SMS_TELNO, // 수신번호 (받는이 :업체)
+            from    : process.env.SMS_TELNO, // 발신번호
+            type    : "LMS"                  // LMS , 구분(SMS,LMS,알림톡) 
        }
         if(DEV_YN !== 'Y'){//개발 모드일때는 메세지 전송하지않도록 
           smsSend.sendSms(params,reqId,reqDate);
@@ -137,7 +135,7 @@ router.post('/save', upload.array('img_file'), function(req, res, next){
 
 
 router.get('/result', function(req, res, next) {
-    const title = config.company_name+" : 견적문의완료";
+    const title = process.env.COMPANY_NAME+" : 견적문의완료";
     const body  = `${reqQuote.result()}`;
     const link  = `<link rel="stylesheet" href="/stylesheets/reqQuote.css">`;
     const script = ``;

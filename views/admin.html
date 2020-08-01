@@ -1,0 +1,47 @@
+{% extends 'page.html' %}
+
+{% block content %}
+<section style="order:3; width:100%;  height:500px;">
+    <a id="logout" href="/auth/logout" class="w-full text-xs font-light underline py-2 px-3">로그아웃</a>
+    <div style="font-family: 'Do Hyeon', Sans-serif;" class="py-10 text-3xl text-center ">견적 현황</div>
+
+    <div style="max-height:500px;" class="shadow overflow-auto rounded border-b border-gray-200 ">
+        <table class="min-w-full bg-white">
+            <thead style="width:100%;" class="bg-gray-800 text-white">
+                <tr>
+                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
+                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">요청자</th>
+                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">휴대폰번호</th>
+                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm hidden md:table-cell">요청업종</td>
+                    <th colspan="3" class="text-left py-3 px-4 uppercase font-semibold text-sm hidden md:table-cell">주소
+                    </th>
+                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">전송여부</th>
+                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm"></th>
+                </tr>
+                <!-- <tr>
+                 <th class="text-left py-3 px-4 uppercase font-semibold text-sm">요청업종</td>
+                 <th colspan="3" class="text-left py-3 px-4 uppercase font-semibold text-sm">주소</th>
+               </tr> -->
+            </thead>
+            <tbody class="text-gray-700">
+                {% for reqQuo in reqQuos %}
+                <tr style="border-bottom:1px solid #dedede;">
+                    <td class="text-left py-3 px-4">{{reqQuo.id}}</td>
+                    <td class="text-left py-3 px-4">{{reqQuo.custNm}}</td>
+                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
+                            href="tel:${data.TEL_NO}">{{reqQuo.telNo}}</a></td>
+                    <td class="text-left py-3 px-4 hidden md:table-cell">{{reqQuo.upjong}}</td>
+                    <td colspan="3" class="text-left py-3 px-4 hidden md:table-cell">{{reqQuo.addr}}</td>
+                    <td class="text-center py-3 px-4 w-16 md:w-24 ">{{reqQuo.SendMsgs[0].sendYn}}</td>
+                    <td class="text-left py-3 px-4 w-20 md:w-24"><a href="/admin/detail?id={{reqQuo.id}}"
+                            class="cursor-pointer bg-gray-700 hover:bg-gray-600 shadow-xl px-2 py-2 font-bold text-xs inline-block text-blue-100 hover:text-white rounded">상세보기</a>
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</section>
+{% endblock %}

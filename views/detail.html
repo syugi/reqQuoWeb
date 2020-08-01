@@ -1,0 +1,66 @@
+{% extends 'page.html' %}
+
+{% block content %}
+
+<section style="order:3; width:100%;  min-height:500px; overflow:auto; background:#f2f2f2;">
+    <form method="POST" enctype="multipart/form-data" action="/admin/confirm">
+
+        <table>
+            <tr>
+                <td class="w-24 text-right py-3 font-bold">ID</td>
+                <td class="px-4">{{reqQuo.id}}</td>
+            </tr>
+            <tr>
+                <td class="w-24 text-right py-3 font-bold">이름</td>
+                <td class="px-4">{{reqQuo.custNm}} ({{reqQuo.custType}})</td>
+            </tr>
+            <tr>
+                <td class="text-right py-3 font-bold">휴대폰 번호</td>
+                <td class="px-4">{{reqQuo.telNo}}</td>
+            </tr>
+            <tr>
+                                   <td class="text-right py-3 font-bold">문자전송여부</td>
+                <td class="px-4"><span class="px-3 ">{{reqQuo.SendMsgs[0].sendYn}}</span>
+                                         <a href="/admin/msgReSend?id={{reqQuo.id}}"
+                        class="bg-transparent hover:bg-gray-600 text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2 text-xs">재발송</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right py-3 font-bold">요청 업종</td>
+                <td class="px-4">{{reqQuo.upjong}}</td>
+            </tr>
+            {% if reqQuo.upjong == '보일러'%}
+            <tr>
+                <td class="text-right py-3 font-bold">보일러 구분</td>
+                <td class="px-4">{{reqQuo.boilerType}}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td class="text-right py-3 font-bold">주소</td>
+                <td class="px-4">{{reqQuo.addr}} {{reqQuo.dtlAddr}} {{reqQuo.extAddr}}
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right py-3 font-bold">상세내용</td>
+                <td class="px-4">{{reqQuo.descr}}</td>
+            </tr>
+
+        </table>
+
+
+        <div class="py-3 px-4 font-bold">첨부파일(현장사진)</div>
+        {% for file in files %}
+        <div class="text-left py-3 px-4"><img src="../img/{{file.strFileNm}}" alt="" class="max-w-full h-auto"></div>
+        <div class="text-left py-3 px-4 hidden">[{{file.id}}] {{file.strFileNm}} {{file.fileDescr}}</div>
+        {% endfor %}
+        <p class="py-4">
+            <!-- <input type="submit" value="확인" name="submit"
+                class="shadow-md font-medium ml-4 py-2 px-4 text-green-100 cursor-pointer bg-blue-600 rounded text-lg tr-mt svelte-jqwywd"> -->
+            <a class="shadow-md font-medium ml-4 py-2 px-4 text-green-100 cursor-pointer bg-blue-600 rounded text-lg tr-mt svelte-jqwywd"
+                id="list" href="/admin">돌아가기</a>
+        </p>
+
+
+    </form>
+</section>
+{% endblock %}

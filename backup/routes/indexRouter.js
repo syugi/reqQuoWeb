@@ -1,8 +1,7 @@
 const express  = require('express'); 
 const router   = express.Router();
 const template = require('../views/template/template.js');		
-const home     = require('../views/home.js');	
-const config   = require('../config/config');
+const home     = require('../views/home.js');
 
 
 const fs = require('fs');
@@ -14,7 +13,7 @@ router.get('/', function(req, res, next) {
    // req.list = dataList;
    // });
 	
-  const title = config.company_name+" : 누수탐지전문공사";
+  const title = process.env.COMPANY_NAME+" : 누수탐지전문공사";
   const body  = `${home.html()}`;
   const link  = `
 		<!--Swiper-->

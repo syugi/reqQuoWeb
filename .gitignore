@@ -3,8 +3,7 @@ node_modules/
 
 # dotenv environment variables file
 .env
-/config/db_config.json
-/config/sms_config.json
+/config/config.json
 
 # file upload
-*/uploads/
+uploads/

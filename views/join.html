@@ -1,0 +1,45 @@
+{% extends 'page.html' %}
+
+{% block content %}
+<section class="login_section py-20 w-full bg-gray-200" style="order:3;">
+    <h2 style="font-family: 'Do Hyeon', Sans-serif;" class="text-3xl font-midium text-center py-4">관리자 회원가입</h2>
+    <div class="w-full flex justify-center">
+        <form class="max-w-2xl" method="POST" action="/auth/join">
+            <div class="mb-4">
+                <label class="block text-md font-light mb-2" for="ID">ID</label>
+                <input
+                    class="w-full bg-drabya-gray border-gray-500 appearance-none border p-4 font-light leading-tight focus:outline-none focus:shadow-outline"
+                    type="text" name="userId" id="userId" placeholder="ID" required autofocus>
+            </div>
+            <div class="mb-4">
+                <label class="block text-md font-light mb-2" for="Name">Name</label>
+                <input
+                    class="w-full bg-drabya-gray border-gray-500 appearance-none border p-4 font-light leading-tight focus:outline-none focus:shadow-outline"
+                    type="text" name="userName" id="userName" placeholder="Name">
+            </div>
+            <div class="mb-4">
+                <label class="block text-md font-light mb-2" for="password">Password</label>
+                <input
+                    class="w-full bg-drabya-gray border-gray-500 appearance-none border p-4 font-light leading-tight focus:outline-none focus:shadow-outline"
+                    type="password" name="password" id="password" placeholder="Password">
+            </div>
+
+            <div class="w-full mb-5">
+                <input type="submit"
+                    class="w-full bg-blue-500 hover:bg-blue-700 text-white font-light py-4 px-6 rounded focus:outline-none focus:shadow-outline"
+                    value="회원가입" name="submit">
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
+
+{% block script %}
+  <script>
+    window.onload = () => {
+      if (new URL(location.href).searchParams.get('error')) {
+        alert('이미 존재하는 ID입니다.');
+      }
+    };
+  </script>
+{% endblock %}
