@@ -55,6 +55,10 @@ module.exports = class ReqQuo extends Sequelize.Model {
         type: Sequelize.STRING(20),
         allowNull: true,
       },
+      confirmYn: {
+        type: Sequelize.STRING(1),
+        allowNull: true,
+      }
     }, {
       sequelize,
       timestamps: true,

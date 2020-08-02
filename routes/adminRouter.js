@@ -1,7 +1,7 @@
 const express = require('express');
 const smsSend = require('./smsSend.js');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
-const { AtchFile, ReqQuo, SendMsg } = require('../models');
+const { AtchFile, ReqQuo, SendMsg , sequelize:{Op}} = require('../models');
 
 const router = express.Router();
 
@@ -11,7 +11,16 @@ router.get('/', async (req, res, next) => {
         res.render('login', { title: "로그인 - " + process.env.COMPANY_NAME });
     } else {
         try {
+            const srchType = req.query.srchType;
+            let whereArr = {confirmYn: null};
+            if(srchType === 'A'){
+                whereArr = {};
+            }else if(srchType === 'Y'){
+                whereArr = {confirmYn: 'Y'};
+            }
+            
             const reqQuos = await ReqQuo.findAll({
+                where: whereArr,
                 include: {
                     model: SendMsg,
                     attributes: ['id', 'sendYn'],
@@ -21,6 +30,7 @@ router.get('/', async (req, res, next) => {
             res.render('admin', {
                 title: "관리자페이지 - " + process.env.COMPANY_NAME,
                 reqQuos,
+                srchType
             });
         } catch (err) {
             console.error(err);
@@ -76,4 +86,24 @@ router.get('/msgReSend', async (req, res, next) => {
         next(error);
     }
 });
+
+router.get('/confirm', async (req, res, next) => {
+    try {
+        const reqId = req.query.id;
+        const reqQuo = await ReqQuo.update({
+            confirmYn : 'Y'
+        },{
+            where: {
+                id: reqId
+            },
+        });
+
+        res.redirect('/admin');
+
+    } catch (error) {
+        console.error(error);
+        next(error);
+    }
+});
+
 module.exports = router;

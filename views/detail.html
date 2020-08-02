@@ -53,14 +53,12 @@
         <div class="text-left py-3 px-4"><img src="../img/{{file.strFileNm}}" alt="" class="max-w-full h-auto"></div>
         <div class="text-left py-3 px-4 hidden">[{{file.id}}] {{file.strFileNm}} {{file.fileDescr}}</div>
         {% endfor %}
-        <p class="py-4">
-            <!-- <input type="submit" value="확인" name="submit"
-                class="shadow-md font-medium ml-4 py-2 px-4 text-green-100 cursor-pointer bg-blue-600 rounded text-lg tr-mt svelte-jqwywd"> -->
+        <p class="py-10">
             <a class="shadow-md font-medium ml-4 py-2 px-4 text-green-100 cursor-pointer bg-blue-600 rounded text-lg tr-mt svelte-jqwywd"
-                id="list" href="/admin">돌아가기</a>
+                id="list" href="/admin">리스트</a>
+            <a class="shadow-md font-medium ml-4 py-2 px-4 text-green-100 cursor-pointer bg-blue-600 rounded text-lg tr-mt svelte-jqwywd"
+                id="list" href="/admin/confirm?id={{reqQuo.id}}">확인처리</a>
         </p>
-
-
     </form>
 </section>
 {% endblock %}
